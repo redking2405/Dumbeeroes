@@ -8,13 +8,17 @@ public class PlayerController : MonoBehaviour
     public int V_playerId;
     Player V_player;
     Rigidbody2D rb;
+    public FixedJoint2D O_armMidpoint;
 
     [SerializeField]
     float V_moveSpeed;
     [SerializeField]
     float V_armSpeed;
-    public Rigidbody2D O_Lhand,O_Rhand;
-    
+    [SerializeField]
+    Rigidbody2D O_Lhand,O_Rhand;
+    [SerializeField]
+    SpringJoint2D O_armSrping;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector2 aimVector = new Vector2(V_player.GetAxis("ArmX"), V_player.GetAxis("ArmY"));
+        O_armMidpoint.transform.position = new Vector2((O_Lhand.transform.position.x+ O_Rhand.transform.position.x)/2, (O_Lhand.transform.position.y + O_Rhand.transform.position.y)/2);
         AimArm(aimVector);
     }
 
@@ -41,43 +46,28 @@ public class PlayerController : MonoBehaviour
         }
         if (V_player.GetButtonDown("Grab"))
         {
-            Collider2D[] hitsL = Physics2D.OverlapCircleAll(O_Lhand.transform.position, 0.4f);
-            Collider2D[] hitsR = Physics2D.OverlapCircleAll(O_Rhand.transform.position, 0.4f);
-            foreach (Collider2D hit in hitsL)
+            O_armSrping.distance = Vector2.Distance(O_Lhand.transform.position, O_Rhand.transform.position);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.5f);
+            foreach (Collider2D hit in hits)
             {
-                if(hit.tag == "GrabAble")
-                {
-                    hit.transform.parent = O_Lhand.transform;
-                    hit.GetComponent<Rigidbody2D>().isKinematic = true;
-                    break;
-                }
-            }
-            foreach (Collider2D hit in hitsR)
-            {
+                Debug.Log(hit.gameObject.name);
                 if (hit.tag == "GrabAble")
                 {
-                    hit.transform.parent = O_Rhand.transform;
-                    hit.GetComponent<Rigidbody2D>().isKinematic = true;
+                    O_armSrping.enabled = true;
+                    O_armMidpoint.enabled = true;
+                    O_armMidpoint.connectedBody = hit.attachedRigidbody;
                     break;
                 }
             }
         }
         if (V_player.GetButtonUp("Grab"))
         {
-            foreach (Transform t in O_Lhand.transform)
+            O_armSrping.enabled = false;
+            if (O_armMidpoint.connectedBody != null)
             {
-                t.parent = null;
-                Rigidbody2D tRb = t.GetComponent<Rigidbody2D>();
-                tRb.isKinematic = false;
-                tRb.velocity = O_Rhand.velocity;
-
-            }
-            foreach (Transform t in O_Rhand.transform)
-            {
-                t.parent = null;
-                Rigidbody2D tRb = t.GetComponent<Rigidbody2D>();
-                tRb.isKinematic = false;
-                tRb.velocity = O_Rhand.velocity;
+                O_armMidpoint.connectedBody.velocity = O_Lhand.velocity;
+                O_armMidpoint.connectedBody = null;
+                O_armMidpoint.enabled = false;
             }
         }
     }
