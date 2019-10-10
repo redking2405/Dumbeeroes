@@ -29,8 +29,10 @@ public class EventOnCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x >= v_Velocity && collision.gameObject.GetComponent<Rigidbody2D>().velocity.y != 0)
+        Debug.Log("Pan dans ta face");
+        if (collision.rigidbody.velocity.magnitude > 0) ;
         {
+            Debug.Log("Tu fais mal méchant");
             v_Event.Invoke();
         }
        
