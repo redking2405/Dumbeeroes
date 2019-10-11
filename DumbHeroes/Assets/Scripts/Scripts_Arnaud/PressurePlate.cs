@@ -7,8 +7,18 @@ public class PressurePlate : MonoBehaviour
 
     //[SerializeField] LayerMask v_Mask;
     [SerializeField] int v_WeightNeeded; //in number of objects
+    [SerializeField] Sprite v_SpriteUnpressed;
+    [SerializeField] Sprite v_SpritePressed;
+    SpriteRenderer renderer;
     List<GameObject> v_ObjectOnPlate = new List<GameObject>();
+    float v_WeightOnPlate;
     [SerializeField] ActivableObjects[] v_ObjectToActivate;
+
+    private void Awake()
+    {
+        renderer = GetComponent<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +28,26 @@ public class PressurePlate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (v_ObjectOnPlate.Count >= v_WeightNeeded)
+
+
+
+        if (v_WeightOnPlate > 0)
+        {
+            renderer.sprite = v_SpritePressed;
+        }
+
+        else renderer.sprite = v_SpriteUnpressed; 
+
+
+        if (v_WeightOnPlate >= v_WeightNeeded)
         {
             ActivateObjects();
+        }
+
+        else
+        {
+            DeactivateObjects();
+           
         }
     }
 
@@ -28,7 +55,7 @@ public class PressurePlate : MonoBehaviour
     {
         if(collision.gameObject.tag == "GrabAble")
         {
-            v_ObjectOnPlate.Add(collision.gameObject);
+            v_WeightOnPlate += collision.attachedRigidbody.mass;
         }
     }
 
@@ -37,7 +64,7 @@ public class PressurePlate : MonoBehaviour
     {
         if(collision.gameObject.tag == "GrabAble")
         {
-            v_ObjectOnPlate.Remove(collision.gameObject);
+            v_WeightOnPlate -= collision.attachedRigidbody.mass;
         }
     }
 
