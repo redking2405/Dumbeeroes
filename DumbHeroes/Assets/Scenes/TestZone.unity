@@ -1596,8 +1596,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660670485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.136, y: -14.84, z: 0}
-  m_LocalScale: {x: 27.700647, y: 0.5, z: 1}
+  m_LocalPosition: {x: 13.136, y: -15.78, z: 0}
+  m_LocalScale: {x: 27.700647, y: 2.381, z: 1}
   m_Children: []
   m_Father: {fileID: 397502609}
   m_RootOrder: 0
@@ -1989,26 +1989,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!231 &2246082471497821449
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2246082471497821682}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 2246082472302753379}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 5.8
-  m_DampingRatio: 0
-  m_Frequency: 5
 --- !u!212 &2246082471497821452
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2105,7 +2085,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2123,10 +2103,10 @@ GameObject:
   - component: {fileID: 2246082471497821452}
   - component: {fileID: 2246082471497821455}
   - component: {fileID: 2246082471497821454}
-  - component: {fileID: 2246082471497821449}
-  - component: {fileID: 2246082471497821683}
   - component: {fileID: 2246082471497821684}
   - component: {fileID: 2246082471497821685}
+  - component: {fileID: 2246082471497821683}
+  - component: {fileID: 2246082471497821686}
   m_Layer: 8
   m_Name: L_hand
   m_TagString: Untagged
@@ -2147,9 +2127,9 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 14.030001, y: -12.14}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2188,6 +2168,26 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
+--- !u!231 &2246082471497821686
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246082471497821682}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 2246082472302753379}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 5.799999
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &2246082471530876034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,7 +2435,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2453,9 +2453,9 @@ GameObject:
   - component: {fileID: 2246082472302753376}
   - component: {fileID: 2246082472302753379}
   - component: {fileID: 2246082472302753378}
-  - component: {fileID: 2246082472302753383}
   - component: {fileID: 2246082472302753384}
   - component: {fileID: 2246082472302753385}
+  - component: {fileID: 2246082472302753383}
   m_Layer: 8
   m_Name: R_hand
   m_TagString: Untagged
@@ -2476,9 +2476,9 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
+  m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 19.83, y: -12.14}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2581,7 +2581,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -2621,7 +2621,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -3376,7 +3376,6 @@ MonoBehaviour:
   - {fileID: 2246082472329293192}
   - {fileID: 2246082472337287631}
   - {fileID: 2246082471497821685}
-  O_armSrping: {fileID: 2246082471497821449}
   ground:
     serializedVersion: 2
     m_Bits: 1024
@@ -3502,7 +3501,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -3581,7 +3580,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0

@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
     HingeJoint2D O_Lhand,O_Rhand;
     [SerializeField]
     SortingGroup[] O_Rarm, O_Larm;
-    [SerializeField]
-    SpringJoint2D O_armSrping;
-    Vector2 V_previousMidpoinrPos;
+    Vector2 V_previousMidpoinrPosL;
+    Vector2 V_previousMidpoinrPosR;
     bool grounded = false;
     [SerializeField]
     LayerMask ground;
+    float lastdir;
 
     bool jump;
     float jumpChrono;
@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && grounded)
         {
             rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
-            //rb.velocity = new Vector2(V_player.GetAxis("MoveX") * V_moveSpeed, rb.velocity.y);
         }
     }
 
@@ -65,7 +64,6 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
             jumpChrono = jumpTime;
-            Debug.Log("jump");
         }
         if (V_player.GetButton("Jump") && jump)
         {
@@ -110,24 +108,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (direction.magnitude != 0)
+        if (V_player.GetAxis("MoveX") != 0)
         {
-            O_Lhand.attachedRigidbody.velocity = direction * V_armSpeed;
-            O_Rhand.attachedRigidbody.velocity = direction * V_armSpeed;
+            O_Lhand.attachedRigidbody.AddForce(new Vector2(-rb.velocity.x * 2, 0));
+            O_Rhand.attachedRigidbody.AddForce(new Vector2(-rb.velocity.x * 2, 0));
+        
+        if(Mathf.Sign(O_Lhand.transform.position.x - transform.position.x) == Mathf.Sign(V_player.GetAxis("MoveX")))
+        {
+            O_Lhand.attachedRigidbody.AddForce(new Vector2(0, 200*Mathf.Abs(V_player.GetAxis("MoveX"))));
         }
-        //if(Mathf.Sign(O_Lhand.transform.position.x) != V_player.GetAxis("MoveX"))
-        //{
-        //    O_Lhand.attachedRigidbody.velocity = new Vector2(O_Lhand.attachedRigidbody.velocity.x,2);
-        //}
-        //if (Mathf.Sign(O_Rhand.transform.position.x) != V_player.GetAxis("MoveX"))
-        //{
-        //    O_Rhand.attachedRigidbody.velocity = new Vector2(O_Lhand.attachedRigidbody.velocity.x, 2);
-        //}
+        if (Mathf.Sign(O_Rhand.transform.position.x- transform.position.x) == Mathf.Sign(V_player.GetAxis("MoveX")))
+        {
+            O_Rhand.attachedRigidbody.AddForce(new Vector2(0, 200 * Mathf.Abs(V_player.GetAxis("MoveX"))));
+        }
+        }
+        lastdir = V_player.GetAxis("MoveX");
         if (V_player.GetButton("Grab"))
         {
             if (O_Lhand.connectedBody == null)
             {
-                //O_armSrping.distance = Vector2.Distance(O_Lhand.transform.position, O_Rhand.transform.position);
                 Collider2D[] hits = Physics2D.OverlapCircleAll(O_Lhand.transform.position, 0.1f);
                 float distance = Mathf.Infinity;
                 Collider2D closest = null;
@@ -140,10 +139,6 @@ public class PlayerController : MonoBehaviour
                 }
                 if (closest != null)
                 {
-                    //O_armSrping.enabled = true;
-                    //O_armMidpoint.enabled = true;
-                    //O_armMidpoint.connectedBody = closest.attachedRigidbody;
-                    //O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     O_Lhand.connectedBody = closest.attachedRigidbody;
                     O_Lhand.connectedAnchor = closest.transform.InverseTransformPoint(O_Lhand.transform.position);
                     O_Lhand.enabled = true;
@@ -171,20 +166,20 @@ public class PlayerController : MonoBehaviour
         }
         if (V_player.GetButtonUp("Grab"))
         {
-            O_armSrping.enabled = false;
             if (O_Lhand.connectedBody != null)
             {
-                O_Lhand.connectedBody.velocity = ((Vector2)O_armMidpoint.transform.position - V_previousMidpoinrPos) / Time.deltaTime;
+                O_Lhand.connectedBody.velocity = ((Vector2)O_Lhand.transform.localPosition - V_previousMidpoinrPosL) / Time.deltaTime*3;
                 O_Lhand.connectedBody = null;
                 O_Lhand.enabled = false;
             }
             if (O_Rhand.connectedBody != null)
             {
-                O_Rhand.connectedBody.velocity = ((Vector2)O_armMidpoint.transform.position - V_previousMidpoinrPos) / Time.deltaTime;
+                O_Rhand.connectedBody.velocity = ((Vector2)O_Rhand.transform.localPosition - V_previousMidpoinrPosR) / Time.deltaTime*3;
                 O_Rhand.connectedBody = null;
                 O_Rhand.enabled = false;
             }
         }
-        V_previousMidpoinrPos = O_armMidpoint.transform.position;
+        V_previousMidpoinrPosL = O_Lhand.transform.localPosition;
+        V_previousMidpoinrPosR = O_Rhand.transform.localPosition;
     }
 }
