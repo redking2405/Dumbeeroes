@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExitLevel : MonoBehaviour
 {
-    [SerializeField] LayerMask mask;
+    /*[SerializeField] LayerMask mask;
     List<PlayerController> players = new List<PlayerController>();
     SpriteRenderer sRenderer;
     public Color D_FinishColor; // Uniquement tant qu'on a pas de niveaux venant après celui ci
@@ -85,5 +85,5 @@ public class ExitLevel : MonoBehaviour
                 players.Remove(player);
             }
         }
-    }
+    }*/
 }
