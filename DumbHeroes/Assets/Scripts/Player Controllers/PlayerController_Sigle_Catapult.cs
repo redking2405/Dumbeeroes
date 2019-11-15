@@ -37,6 +37,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     float throwTimeMax;
 
     bool charging;
+    bool grabbed;
     float charge;
     float recRotation;
     Vector2 recDirection;
@@ -62,7 +63,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && grounded)
+        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
         {
             rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
         }
@@ -121,12 +122,12 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
 
     void AimArm(Vector2 direction)
     {
-        if (direction.magnitude != 0 && !charging)
+        if (direction.magnitude != 0)
         {
             LastAim = direction;
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
-
+        recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
         if (V_player.GetButton("Grab"))
         {
             if (O_armMidpoint.connectedBody == null)
@@ -147,6 +148,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     O_armMidpoint.enabled = true;
                 }
+                grabbed = true;
             }
             if (O_armMidpoint.connectedBody != null && charging)
             {
@@ -154,21 +156,20 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 charge += Time.deltaTime;
 
                 float cprc = charge / throwTimeMax;
-                Debug.Log(cprc);
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 0.5f,cprc);
-                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position+ recDirection),Color.red);
+                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f,cprc);
+                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position+ recDirection*2),Color.red);
             }
         }
-        if (V_player.GetButtonTimedPressDown("Grab", 0.3f))
+        if (V_player.GetButtonDown("Grab"))
         {
-            if(O_armMidpoint.connectedBody != null)
+            if(O_armMidpoint.connectedBody != null && !grabbed)
             {
                 charging = true;
-                recDirection = (O_armMidpoint.transform.position-transform.position);
             }
         }
         if (V_player.GetButtonUp("Grab"))
         {
+            grabbed = false;
             if (O_armMidpoint.connectedBody != null && charging)
             {
                 O_armMidpoint.connectedBody.velocity = recDirection*throwCurve.Evaluate(Mathf.Min(throwTimeMax,charge/throwTimeMax))*throwForce;
@@ -180,5 +181,10 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
             }
         }
         V_previousMidpoinrPos = O_armMidpoint.transform.localPosition;
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(0, 0, 100, 100), ""+(int)rb.velocity.magnitude);
     }
 }
