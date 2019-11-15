@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+DumbHeroes/Assets/package_player/Graph/Anima2D/Lib/Editor/x64/Anima2D.dll.meta
