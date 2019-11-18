@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class PressurePlate : Interrupteur
 {
 
     //[SerializeField] LayerMask v_Mask;
     [SerializeField] int v_WeightNeeded; //in number of objects
-    [SerializeField] Sprite v_SpriteUnpressed;
-    [SerializeField] Sprite v_SpritePressed;
-    SpriteRenderer renderer;
+    
     List<GameObject> v_ObjectOnPlate = new List<GameObject>();
     float v_WeightOnPlate;
-    [SerializeField] ActivableObjects[] v_ObjectToActivate;
-
-    private void Awake()
-    {
-        renderer = GetComponent<SpriteRenderer>();
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +19,7 @@ public class PressurePlate : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected new void Update()
     {
 
 
@@ -69,19 +62,5 @@ public class PressurePlate : MonoBehaviour
     }
 
 
-    public void ActivateObjects()
-    {
-        for(int i=0; i<v_ObjectToActivate.Length; i++)
-        {
-            v_ObjectToActivate[i].Activate();
-        }
-    }
-
-    public void DeactivateObjects()
-    {
-        for(int i=0; i<v_ObjectToActivate.Length; i++)
-        {
-            v_ObjectToActivate[i].Deactivate();
-        }
-    }
+    
 }
