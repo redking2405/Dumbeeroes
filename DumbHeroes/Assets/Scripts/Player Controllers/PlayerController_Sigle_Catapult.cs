@@ -25,7 +25,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     Transform O_Lhand, O_Rhand;
     [SerializeField]
     SortingGroup[] O_Rarm, O_Larm;
-    Vector2 V_previousMidpoinrPos;
     bool grounded = false;
     [SerializeField]
     LayerMask ground;
@@ -37,7 +36,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     float throwTimeMax;
 
     bool charging;
-    bool grabbed;
+    bool regrab = true;
     float charge;
     float recRotation;
     Vector2 recDirection;
@@ -128,7 +127,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
-        if (V_player.GetButton("Grab"))
+        if (V_player.GetButton("Grab") && regrab)
         {
             if (O_armMidpoint.connectedBody == null)
             {
@@ -148,43 +147,66 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     O_armMidpoint.enabled = true;
                 }
-                grabbed = true;
-            }
-            if (O_armMidpoint.connectedBody != null && charging)
-            {
-                charging = true;
-                charge += Time.deltaTime;
-
-                float cprc = charge / throwTimeMax;
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f,cprc);
-                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position+ recDirection*2),Color.red);
             }
         }
-        if (V_player.GetButtonDown("Grab"))
+        if (V_player.GetButton("Throw"))
         {
-            if(O_armMidpoint.connectedBody != null && !grabbed)
+            if(O_armMidpoint.connectedBody != null)
             {
-                charging = true;
+                    charging = true;
+                    charge += Time.deltaTime;
+
+                    float cprc = charge / throwTimeMax;
+                    O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f, cprc);
+                    Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
             }
         }
         if (V_player.GetButtonUp("Grab"))
         {
-            grabbed = false;
-            if (O_armMidpoint.connectedBody != null && charging)
+            regrab = true;
+            if (O_armMidpoint.connectedBody != null)
             {
-                O_armMidpoint.connectedBody.velocity = recDirection*throwCurve.Evaluate(Mathf.Min(throwTimeMax,charge/throwTimeMax))*throwForce;
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = 2.5f;
-                O_armMidpoint.connectedBody = null;
-                O_armMidpoint.enabled = false;
-                charging = false;
-                charge = 0;
+                if (charging)
+                {
+                    Debug.Log("dropthrow");
+                    ThrowObject();
+                }
+                else
+                {
+                    Debug.Log("drop");
+                    DropObject();
+                }
             }
         }
-        V_previousMidpoinrPos = O_armMidpoint.transform.localPosition;
+        if (V_player.GetButtonUp("Throw"))
+        {
+            if (O_armMidpoint.connectedBody != null && charging)
+            {
+                Debug.Log("throw");
+                ThrowObject();
+            }
+        }
+    }
+
+    void ThrowObject()
+    {
+        regrab = false;
+        O_armMidpoint.connectedBody.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
+        O_armMidpoint.GetComponent<DistanceJoint2D>().distance = 2.5f;
+        charging = false;
+        charge = 0;
+        DropObject();
+    }
+
+    void DropObject()
+    {
+        O_armMidpoint.connectedBody = null;
+        O_armMidpoint.enabled = false;
     }
 
     private void OnGUI()
     {
+        GUI.Label(new Rect(0, 15, 100, 100), "" + (int)rb.velocity.magnitude);
         GUI.Label(new Rect(0, 0, 100, 100), ""+(int)rb.velocity.magnitude);
     }
 }
