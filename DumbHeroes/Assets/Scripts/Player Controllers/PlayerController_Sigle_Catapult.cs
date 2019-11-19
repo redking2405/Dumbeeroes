@@ -41,8 +41,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     float throwTimeMax;
 
     bool charging;
-    bool regrab = true;
     float charge;
+    bool regrab;
     float recRotation;
     float grabpointDist;
     Vector2 recDirection;
@@ -142,9 +142,30 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
-        if (V_player.GetButton("Grab") && regrab)
+
+        if (V_player.GetButtonDown("Grab"))
         {
-            if (CarriedObject == null)
+            if (CarriedObject != null)
+            {
+                Debug.Log("drop");
+                regrab = false;
+                if (charging)
+                {
+                    ThrowObject();
+                }
+                else
+                {
+                    DropObject();
+                }
+            }
+        }
+        if (V_player.GetButtonUp("Grab"))
+        {
+            regrab = true;
+        }
+        if (V_player.GetButton("Grab"))
+        {
+            if (CarriedObject == null && regrab)
             {
                 Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.1f);
                 float distance = Mathf.Infinity;
@@ -167,6 +188,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 }
             }
         }
+
+
         if (V_player.GetButton("Throw"))
         {
             if (CarriedObject != null)
@@ -178,21 +201,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
                 O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1.4f, cprc);
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
-            }
-        }
-        if (V_player.GetButtonUp("Grab"))
-        {
-            regrab = true;
-            if (CarriedObject != null)
-            {
-                if (charging)
-                {
-                    ThrowObject();
-                }
-                else
-                {
-                    DropObject();
-                }
             }
         }
         if (V_player.GetButtonUp("Throw"))
@@ -208,7 +216,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        regrab = false;
         CarriedObject.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
