@@ -10,6 +10,11 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     Player V_player;
     Rigidbody2D rb;
     public FixedJoint2D O_armMidpoint;
+    public Animator anims;
+    public Rigidbody2D CarriedObject
+    {
+        get { return O_armMidpoint.connectedBody; }
+    }
 
     [SerializeField]
     float V_moveSpeed;
@@ -39,6 +44,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     bool regrab = true;
     float charge;
     float recRotation;
+    float grabpointDist;
     Vector2 recDirection;
     Vector2 LastAim;
 
@@ -49,12 +55,15 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         V_player = ReInput.players.GetPlayer(V_playerId);
+        anims = GetComponentInParent<Animator>();
+        grabpointDist = O_armMidpoint.GetComponent<DistanceJoint2D>().distance;
     }
 
     void Update()
     {
         Vector2 aimVector = new Vector2(V_player.GetAxis("ArmX"), V_player.GetAxis("ArmY"));
         grounded = Physics2D.Raycast(O_groundcheck.position, -Vector2.up, 0.1f, ground);
+        anims.SetBool("floor", grounded);
         AimArm(aimVector.normalized);
         ArmLayer();
         Jump();
@@ -64,9 +73,10 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     {
         //if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
         //{
-            //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
-            //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
-            //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
+        //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
+        //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
+        //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
+        anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
             rb.velocity = new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"), rb.velocity.y);
         //}
     }
@@ -146,6 +156,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 }
                 if (closest != null)
                 {
+                    anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     O_armMidpoint.enabled = true;
@@ -161,7 +172,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 float cprc = charge / throwTimeMax;
                 V_player.SetVibration(0, vibrateCurve.Evaluate(cprc));
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f, cprc);
+                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1.4f, cprc);
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
             }
         }
@@ -197,7 +208,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
         regrab = false;
         O_armMidpoint.connectedBody.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
-        O_armMidpoint.GetComponent<DistanceJoint2D>().distance = 2.5f;
+        O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;
         DropObject();
@@ -205,6 +216,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
 
     void DropObject()
     {
+        anims.SetBool("grab", false);
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;

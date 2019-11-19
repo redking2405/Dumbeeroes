@@ -10292,6 +10292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   V_playerId: 0
   O_armMidpoint: {fileID: 1373431493}
+  anims: {fileID: 0}
   V_moveSpeed: 10
   O_groundcheck: {fileID: 485264035}
   jumpForce: 10
@@ -12392,6 +12393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   V_playerId: 0
   O_armMidpoint: {fileID: 6955503}
+  anims: {fileID: 0}
   V_moveSpeed: 10
   O_groundcheck: {fileID: 1637404395}
   jumpForce: 10
@@ -17267,7 +17269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!210 &2054951216
 SortingGroup:
   m_ObjectHideFlags: 0
