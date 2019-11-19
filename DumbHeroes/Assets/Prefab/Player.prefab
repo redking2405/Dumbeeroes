@@ -4939,7 +4939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470974312925288960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.04, y: -4.31, z: -5.509246}
+  m_LocalPosition: {x: 0, y: -4.31, z: -5.509246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1470974313933789832}
@@ -10971,7 +10971,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -21665,7 +21665,7 @@ MonoBehaviour:
   V_moveSpeed: 10
   O_groundcheck: {fileID: 5043121719482712753}
   jumpForce: 20
-  jumpTime: 0.12
+  jumpTime: 0.25
   V_armSpeed: 30
   O_Lhand: {fileID: 1470974314391503530}
   O_Rhand: {fileID: 1470974313561448506}
@@ -21853,7 +21853,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
