@@ -3759,11 +3759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2f30f947bbeb149b9a8a943fc39221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v_WeightNeeded: 1
   v_SpriteUnpressed: {fileID: 0}
   v_SpritePressed: {fileID: 0}
   v_ObjectToActivate:
   - {fileID: 390924999}
+  v_WeightNeeded: 1
 --- !u!212 &1259133533
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4345,7 +4345,6 @@ MonoBehaviour:
   - {fileID: 489631038}
   - {fileID: 176867618}
   - {fileID: 1638903021}
-  V_previousMidpoinrPos: {x: 0, y: 0}
   ground:
     serializedVersion: 2
     m_Bits: 1024
