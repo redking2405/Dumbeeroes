@@ -71,14 +71,15 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
-        //{
-        //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
+        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
+        {
+        rb.AddForce(new Vector2(1000 * V_player.GetAxis("MoveX"), 0));
         //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
         //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
         anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
-            rb.velocity = new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"), rb.velocity.y);
-        //}
+        //rb.velocity = new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"), rb.velocity.y);
+        //Physics2DExtensions.AddForce(rb, new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"),0), ForceMode.VelocityChange);
+        }
     }
 
     
@@ -145,7 +146,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
         if (V_player.GetButton("Grab") && regrab)
         {
-            if (O_armMidpoint.connectedBody == null)
+            if (CarriedObject == null)
             {
                 Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.1f);
                 float distance = Mathf.Infinity;
@@ -168,7 +169,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         if (V_player.GetButton("Throw"))
         {
-            if (O_armMidpoint.connectedBody != null)
+            if (CarriedObject != null)
             {
                 charging = true;
                 charge += Time.deltaTime;
@@ -182,7 +183,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         if (V_player.GetButtonUp("Grab"))
         {
             regrab = true;
-            if (O_armMidpoint.connectedBody != null)
+            if (CarriedObject != null)
             {
                 if (charging)
                 {
@@ -198,7 +199,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         if (V_player.GetButtonUp("Throw"))
         {
-            if (O_armMidpoint.connectedBody != null && charging)
+            if (CarriedObject != null && charging)
             {
                 Debug.Log("throw");
                 ThrowObject();
@@ -210,7 +211,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
         regrab = false;
-        O_armMidpoint.connectedBody.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
+        CarriedObject.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;
@@ -223,11 +224,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
-    }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(20, 15, 100, 100), "" + (int)rb.velocity.x);
     }
 
     IEnumerator ShakeController(float power, float time, int motor, bool both)
@@ -248,6 +244,11 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
             V_player.SetVibration(motor, 0);
             yield break;
         }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(20, 15, 100, 100), "" + (int)rb.velocity.x);
     }
 
     void OutlineCheck()

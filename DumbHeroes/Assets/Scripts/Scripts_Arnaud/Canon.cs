@@ -71,8 +71,9 @@ public class Canon : ActivableObjects
             Rigidbody2D rbd = canonBall.GetComponent<Rigidbody2D>();
             if (rbd)
             {
-                v_Angle = Mathf.Deg2Rad * v_Angle;
-                Vector2 direction = Quaternion.Euler(0, 0, v_Angle)*Vector2.right;
+                //v_Angle = Mathf.Deg2Rad * v_Angle;
+                var direction = Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right;
+                direction = direction.normalized;
                 rbd.AddForce(direction * v_Force, ForceMode2D.Impulse);
 
             }
