@@ -10,6 +10,7 @@ public class Interrupteur : MonoBehaviour
     [SerializeField] protected ActivableObjects[] v_ObjectToActivate;
     protected bool v_IsActivated;
     bool v_ReInitialised;
+    protected bool v_IsTriggered;
     protected void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();

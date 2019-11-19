@@ -5,6 +5,8 @@ using UnityEngine;
 public class LoadingCanon : MonoBehaviour
 {
     Canon v_MyCanon;
+    Rigidbody2D v_Target;
+
     // Start is called before the first frame update
 
     private void Awake()
