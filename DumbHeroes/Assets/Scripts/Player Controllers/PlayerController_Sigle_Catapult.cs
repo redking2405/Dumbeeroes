@@ -81,6 +81,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         //}
     }
 
+    
+
     void Jump()
     {
         if (grounded == true && V_player.GetButtonDown("Jump"))
@@ -246,5 +248,31 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
             V_player.SetVibration(motor, 0);
             yield break;
         }
+    }
+
+    void OutlineCheck()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.1f);
+        float distance = Mathf.Infinity;
+        Collider2D closest = null;
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.tag == "GrabAble" && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
+            {
+                closest = hit;
+            }
+        }
+        if (closest != null)
+        {
+            if(closest.GetComponent<Outline>())
+            {
+                closest.GetComponent<SpriteRenderer>().material = closest.GetComponent<Outline>().outlineMat;
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        OutlineCheck();
     }
 }
