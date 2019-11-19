@@ -41,8 +41,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     float throwTimeMax;
 
     bool charging;
-    bool regrab = true;
     float charge;
+    bool regrab;
     float recRotation;
     float grabpointDist;
     Vector2 recDirection;
@@ -142,9 +142,30 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
-        if (V_player.GetButton("Grab") && regrab)
+
+        if (V_player.GetButtonDown("Grab"))
         {
-            if (CarriedObject == null)
+            if (CarriedObject != null)
+            {
+                Debug.Log("drop");
+                regrab = false;
+                if (charging)
+                {
+                    ThrowObject();
+                }
+                else
+                {
+                    DropObject();
+                }
+            }
+        }
+        if (V_player.GetButtonUp("Grab"))
+        {
+            regrab = true;
+        }
+        if (V_player.GetButton("Grab"))
+        {
+            if (CarriedObject == null && regrab)
             {
                 Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.1f);
                 float distance = Mathf.Infinity;
@@ -161,10 +182,14 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                     anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
+                    CarriedObject.gameObject.layer = 9;
+                    CarriedObject.transform.parent = O_armMidpoint.transform;
                     O_armMidpoint.enabled = true;
                 }
             }
         }
+
+
         if (V_player.GetButton("Throw"))
         {
             if (CarriedObject != null)
@@ -176,23 +201,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
                 O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1.4f, cprc);
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
-            }
-        }
-        if (V_player.GetButtonUp("Grab"))
-        {
-            regrab = true;
-            if (CarriedObject != null)
-            {
-                if (charging)
-                {
-                    Debug.Log("dropthrow");
-                    ThrowObject();
-                }
-                else
-                {
-                    Debug.Log("drop");
-                    DropObject();
-                }
             }
         }
         if (V_player.GetButtonUp("Throw"))
@@ -208,7 +216,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        regrab = false;
         CarriedObject.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
@@ -219,6 +226,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     void DropObject()
     {
         anims.SetBool("grab", false);
+        CarriedObject.gameObject.layer = 0;
+        CarriedObject.transform.parent = null;
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
@@ -247,5 +256,31 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     private void OnGUI()
     {
         GUI.Label(new Rect(20, 15, 100, 100), "" + (int)rb.velocity.x);
+    }
+
+    void OutlineCheck()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(O_armMidpoint.transform.position, 0.1f);
+        float distance = Mathf.Infinity;
+        Collider2D closest = null;
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.tag == "GrabAble" && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
+            {
+                closest = hit;
+            }
+        }
+        if (closest != null)
+        {
+            if (closest.GetComponent<Outline>())
+            {
+                closest.GetComponent<SpriteRenderer>().material = closest.GetComponent<Outline>().outlineMat;
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        OutlineCheck();
     }
 }
