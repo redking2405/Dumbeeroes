@@ -34,7 +34,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     [SerializeField]
     LayerMask ground;
     [SerializeField]
-    AnimationCurve throwCurve, vibrateCurve;
+    AnimationCurve throwCurve, vibrateCurve, jumpCurve;
     [SerializeField]
     float throwForce;
     [SerializeField]
@@ -86,14 +86,14 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         if (grounded == true && V_player.GetButtonDown("Jump"))
         {
             jump = true;
-            jumpChrono = jumpTime;
+            jumpChrono = 0;
         }
         if (V_player.GetButton("Jump") && jump)
         {
-            if (jumpChrono > 0)
+            if (jumpChrono < jumpTime)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpChrono -= Time.deltaTime;
+                rb.velocity = new Vector2(rb.velocity.x, jumpCurve.Evaluate(jumpChrono/jumpTime)*jumpForce);
+                jumpChrono += Time.deltaTime;
             }
             else
             {
@@ -104,6 +104,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         {
             jump = false;
         }
+        anims.SetBool("jump", jump);
     }
 
     void ArmLayer()
