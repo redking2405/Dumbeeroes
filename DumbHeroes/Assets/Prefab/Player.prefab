@@ -152,7 +152,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -569154871036841840, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5007,6 +5007,7 @@ GameObject:
   - component: {fileID: 1470974312983222671}
   - component: {fileID: 5043121719387606995}
   - component: {fileID: 1470974312983222666}
+  - component: {fileID: 493377071}
   m_Layer: 0
   m_Name: left_hand
   m_TagString: Untagged
@@ -5070,7 +5071,7 @@ SpriteRenderer:
   m_SortingOrder: -2
   m_Sprite: {fileID: -5300644949687455625, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5121,6 +5122,17 @@ SpringJoint2D:
   m_Distance: 0.1
   m_DampingRatio: 1
   m_Frequency: 20
+--- !u!210 &493377071
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974312983222669}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1470974312989164039
 GameObject:
   m_ObjectHideFlags: 0
@@ -9991,6 +10003,7 @@ GameObject:
   - component: {fileID: 1470974313138789628}
   - component: {fileID: 5043121719387606952}
   - component: {fileID: 5043121719387606955}
+  - component: {fileID: 809380547}
   m_Layer: 0
   m_Name: right_arm1
   m_TagString: Untagged
@@ -10052,7 +10065,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: -8661325299692164682, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10107,6 +10120,17 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 250
+--- !u!210 &809380547
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974313138789626}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1 &1470974313152920058
 GameObject:
   m_ObjectHideFlags: 0
@@ -10165,6 +10189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1470974313291801527}
   - component: {fileID: 1470974313291801526}
+  - component: {fileID: 536025945}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10213,6 +10238,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!210 &536025945
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974313291801525}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
 --- !u!1 &1470974313438800449
 GameObject:
   m_ObjectHideFlags: 0
@@ -10258,7 +10294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: d5a8d8be486960d45839c9f5c8504f0e, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
@@ -10392,7 +10428,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4b66890ca24885241b68e04fbef6b8e0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10414,6 +10450,7 @@ GameObject:
   - component: {fileID: 1470974313561448507}
   - component: {fileID: 5043121719387606956}
   - component: {fileID: 1470974313561448502}
+  - component: {fileID: 509606565}
   m_Layer: 0
   m_Name: right_hand
   m_TagString: Untagged
@@ -10477,7 +10514,7 @@ SpriteRenderer:
   m_SortingOrder: 4
   m_Sprite: {fileID: 3003748615124198683, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10528,6 +10565,17 @@ SpringJoint2D:
   m_Distance: 0.1
   m_DampingRatio: 1
   m_Frequency: 20
+--- !u!210 &509606565
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974313561448505}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1 &1470974313740034756
 GameObject:
   m_ObjectHideFlags: 0
@@ -10540,6 +10588,7 @@ GameObject:
   - component: {fileID: 1470974313740034758}
   - component: {fileID: 5043121719387606959}
   - component: {fileID: 5043121719387606958}
+  - component: {fileID: 1355738415}
   m_Layer: 0
   m_Name: left_arm1
   m_TagString: Untagged
@@ -10601,7 +10650,7 @@ SpriteRenderer:
   m_SortingOrder: -4
   m_Sprite: {fileID: -3896212309309844021, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10656,6 +10705,17 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 250
+--- !u!210 &1355738415
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974313740034756}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1470974313796707234
 GameObject:
   m_ObjectHideFlags: 0
@@ -10701,7 +10761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 37961b2c9bf90c447899952888237ec2, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
@@ -10808,7 +10868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 300532ff4bea87b46960ffbcb2043d20, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
@@ -15747,7 +15807,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 2dbc984e7e4ecab409fada7d73d99693, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15874,7 +15934,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 5e2ef000285db5b4c8f3643f5f77cc2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15954,7 +16014,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c255609ee88fe994f98151652f81162f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16126,10 +16186,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -16195,6 +16255,7 @@ GameObject:
   - component: {fileID: 1470974314303157922}
   - component: {fileID: 5043121719387606954}
   - component: {fileID: 5043121719387606957}
+  - component: {fileID: 1494480688}
   m_Layer: 0
   m_Name: right_arm2
   m_TagString: Untagged
@@ -16256,7 +16317,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: -3645555324210769890, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16305,6 +16366,17 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: -0.64503974, y: 1.8799919}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!210 &1494480688
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974314303157920}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
 --- !u!1 &1470974314329406854
 GameObject:
   m_ObjectHideFlags: 0
@@ -16480,7 +16552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteMesh: {fileID: 11400000, guid: 12848307537749a47947dd48e8bc092e, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
@@ -16604,6 +16676,7 @@ GameObject:
   - component: {fileID: 1470974314476212653}
   - component: {fileID: 5043121719387606993}
   - component: {fileID: 5043121719387606992}
+  - component: {fileID: 1151625199}
   m_Layer: 0
   m_Name: left_arm2
   m_TagString: Untagged
@@ -16665,7 +16738,7 @@ SpriteRenderer:
   m_SortingOrder: -3
   m_Sprite: {fileID: -7903211097526244196, guid: ef91fe20e388e0741b0098c49e458b8c,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16714,6 +16787,17 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: -0.9250268, y: 1.7400049}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!210 &1151625199
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974314476212651}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1470974314477419455
 GameObject:
   m_ObjectHideFlags: 0
@@ -21585,6 +21669,7 @@ GameObject:
   - component: {fileID: 1470974314718780906}
   - component: {fileID: 1470974314718780905}
   - component: {fileID: 1470974314718780900}
+  - component: {fileID: 523365919}
   m_Layer: 8
   m_Name: Body
   m_TagString: Player
@@ -21748,6 +21833,17 @@ MonoBehaviour:
     m_RotationOrder: 4
   throwForce: 75
   throwTimeMax: 1.5
+--- !u!210 &523365919
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470974314718780903}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
 --- !u!1 &1470974314737425515
 GameObject:
   m_ObjectHideFlags: 0
@@ -26571,6 +26667,7 @@ GameObject:
   - component: {fileID: 5043121719106731265}
   - component: {fileID: 5043121719106731264}
   - component: {fileID: 5043121719106731294}
+  - component: {fileID: 1837911899}
   m_Layer: 0
   m_Name: Grabpoint
   m_TagString: Untagged
@@ -26604,7 +26701,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -26650,6 +26747,17 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 2.5
   m_MaxDistanceOnly: 0
+--- !u!210 &1837911899
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5043121719106731266}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
 --- !u!1 &5043121719482712752
 GameObject:
   m_ObjectHideFlags: 0

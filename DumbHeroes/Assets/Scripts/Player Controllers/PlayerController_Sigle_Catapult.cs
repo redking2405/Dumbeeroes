@@ -82,8 +82,6 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
     }
 
-    
-
     void Jump()
     {
         if (grounded == true && V_player.GetButtonDown("Jump"))
@@ -163,6 +161,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                     anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
+                    CarriedObject.gameObject.layer = 9;
+                    CarriedObject.transform.parent = O_armMidpoint.transform;
                     O_armMidpoint.enabled = true;
                 }
             }
@@ -187,12 +187,10 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
             {
                 if (charging)
                 {
-                    Debug.Log("dropthrow");
                     ThrowObject();
                 }
                 else
                 {
-                    Debug.Log("drop");
                     DropObject();
                 }
             }
@@ -221,6 +219,8 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     void DropObject()
     {
         anims.SetBool("grab", false);
+        CarriedObject.gameObject.layer = 0;
+        CarriedObject.transform.parent = null;
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
@@ -265,7 +265,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         }
         if (closest != null)
         {
-            if(closest.GetComponent<Outline>())
+            if (closest.GetComponent<Outline>())
             {
                 closest.GetComponent<SpriteRenderer>().material = closest.GetComponent<Outline>().outlineMat;
             }
