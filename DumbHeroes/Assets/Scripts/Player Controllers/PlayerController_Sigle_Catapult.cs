@@ -172,7 +172,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 float cprc = charge / throwTimeMax;
                 V_player.SetVibration(0, vibrateCurve.Evaluate(cprc));
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 2f, cprc);
+                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1.4f, cprc);
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
             }
         }
