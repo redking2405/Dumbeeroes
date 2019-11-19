@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Rewired;
 
-public class PlayerController_Sigle_Catapult : MonoBehaviour
+public class PlayerController_Sigle_CatapultJauge : MonoBehaviour
 {
     public int V_playerId;
     Player V_player;
@@ -29,7 +29,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     [SerializeField]
     LayerMask ground;
     [SerializeField]
-    AnimationCurve throwCurve, vibrateCurve;
+    AnimationCurve throwCurve,vibrationCurve;
     [SerializeField]
     float throwForce;
     [SerializeField]
@@ -41,6 +41,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     float recRotation;
     Vector2 recDirection;
     Vector2 LastAim;
+    float lowestpress;
 
     bool jump;
     float jumpChrono;
@@ -62,13 +63,10 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
-        //{
-            //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
-            //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
-            //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
-            rb.velocity = new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"), rb.velocity.y);
-        //}
+        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
+        {
+            rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode2D.Force);
+        }
     }
 
     void Jump()
@@ -152,42 +150,47 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
                 }
             }
         }
-        if (V_player.GetButton("Throw"))
-        {
-            if (O_armMidpoint.connectedBody != null)
-            {
-                charging = true;
-                charge += Time.deltaTime;
-                float cprc = charge / throwTimeMax;
-                V_player.SetVibration(0, vibrateCurve.Evaluate(cprc));
-                //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f, cprc);
-                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
-            }
-        }
+        //if (V_player.GetButton("Throw"))
+        //{
+        //    if(O_armMidpoint.connectedBody != null)
+        //    {
+        //            charging = true;
+        //            charge += Time.deltaTime;
+
+        //            float cprc = charge / throwTimeMax;
+        //            O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f, cprc);
+        //            Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
+        //    }
+        //}
+
+        Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * V_player.GetAxis("Throw")), Color.red);
+        O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(2.5f, 1f, V_player.GetAxis("Throw"));
         if (V_player.GetButtonUp("Grab"))
         {
             regrab = true;
             if (O_armMidpoint.connectedBody != null)
             {
-                if (charging)
+                if (V_player.GetAxis("Throw") > 0.01f)
                 {
-                    Debug.Log("dropthrow");
                     ThrowObject();
                 }
                 else
                 {
-                    Debug.Log("drop");
                     DropObject();
                 }
             }
         }
-        if (V_player.GetButtonUp("Throw"))
+        float axis = V_player.GetAxis("Throw");
+        if (O_armMidpoint.connectedBody)
         {
-            if (O_armMidpoint.connectedBody != null && charging)
+            if (axis < Mathf.Max(0, lowestpress - 0.1f))
             {
-                Debug.Log("throw");
                 ThrowObject();
+            }
+            else
+            {
+                V_player.SetVibration(0, vibrationCurve.Evaluate(axis));
+                lowestpress = axis;
             }
         }
     }
@@ -196,7 +199,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
         regrab = false;
-        O_armMidpoint.connectedBody.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
+        O_armMidpoint.connectedBody.velocity = recDirection * throwCurve.Evaluate(lowestpress) * throwForce;
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = 2.5f;
         charging = false;
         charge = 0;
@@ -206,13 +209,9 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
     void DropObject()
     {
         V_player.SetVibration(0, 0);
+        lowestpress = 0;
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
-    }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(20, 15, 100, 100), "" + (int)rb.velocity.x);
     }
 
     IEnumerator ShakeController(float power, float time, int motor, bool both)
@@ -233,5 +232,12 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
             V_player.SetVibration(motor, 0);
             yield break;
         }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(20, 15, 100, 100), "" + V_player.GetAxis("Throw"));
+        GUI.Label(new Rect(20, 30, 100, 100), "" + lowestpress);
+        GUI.Label(new Rect(20, 0, 100, 100), "" + (int)rb.velocity.x);
     }
 }
