@@ -10292,6 +10292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   V_playerId: 0
   O_armMidpoint: {fileID: 1373431493}
+  anims: {fileID: 0}
   V_moveSpeed: 10
   O_groundcheck: {fileID: 485264035}
   jumpForce: 10
@@ -12392,6 +12393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   V_playerId: 0
   O_armMidpoint: {fileID: 6955503}
+  anims: {fileID: 0}
   V_moveSpeed: 10
   O_groundcheck: {fileID: 1637404395}
   jumpForce: 10
@@ -17267,7 +17269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!210 &2054951216
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -19250,6 +19252,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1470974314718780906, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1470974313796707236, guid: 87aff4a7121bce94fa71b9ba2b92676c,
         type: 3}
       propertyPath: m_Mesh
@@ -19264,6 +19271,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606952, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606954, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606956, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606959, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606993, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043121719387606995, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87aff4a7121bce94fa71b9ba2b92676c, type: 3}

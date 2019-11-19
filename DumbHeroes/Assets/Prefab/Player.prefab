@@ -21622,7 +21622,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
@@ -21661,6 +21661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   V_playerId: 0
   O_armMidpoint: {fileID: 5043121719106731264}
+  anims: {fileID: 0}
   V_moveSpeed: 10
   O_groundcheck: {fileID: 5043121719482712753}
   jumpForce: 10
