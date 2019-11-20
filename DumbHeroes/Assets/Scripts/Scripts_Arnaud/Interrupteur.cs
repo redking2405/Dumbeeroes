@@ -65,7 +65,7 @@ public class Interrupteur : MonoBehaviour
         if(collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "Player")
         {
             v_ReInitialised = true;
-            trigger = false;
+            //trigger = false;
         }
     }
 
