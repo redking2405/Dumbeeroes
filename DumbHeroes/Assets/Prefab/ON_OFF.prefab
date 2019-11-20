@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8298777961072880083}
   - component: {fileID: 8298777961072880084}
   - component: {fileID: 8298777961072880080}
+  - component: {fileID: -5765772024794458036}
   m_Layer: 0
-  m_Name: PressurePlate
+  m_Name: ON_OFF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8efece909a1dd5d4c8218400a3e21755, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef91dd734e6228a498335f470b557f9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,13 +91,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8298777961072880086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b2f30f947bbeb149b9a8a943fc39221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v_SpriteUnpressed: {fileID: 21300000, guid: 8efece909a1dd5d4c8218400a3e21755, type: 3}
-  v_SpritePressed: {fileID: 21300000, guid: 812414c2cb09f9b40888f4c568c533f6, type: 3}
+  v_SpriteUnpressed: {fileID: 21300000, guid: ef91dd734e6228a498335f470b557f9a, type: 3}
+  v_SpritePressed: {fileID: 21300000, guid: 46d26c8fed92ede46922f6a91aa73b1b, type: 3}
   v_ObjectToActivate:
   - {fileID: 0}
   v_IsTriggered: 0
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.49, y: 2.76}
+    oldSize: {x: 1.49, y: 1.46}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -148,3 +149,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5765772024794458036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298777961072880086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bdae5dc19817443b47af5f48eb8ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v_SpriteUnpressed: {fileID: 21300000, guid: ef91dd734e6228a498335f470b557f9a, type: 3}
+  v_SpritePressed: {fileID: 21300000, guid: 46d26c8fed92ede46922f6a91aa73b1b, type: 3}
+  v_ObjectToActivate: []
+  v_IsTriggered: 0
