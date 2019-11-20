@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Rewired;
 
-public class PlayerController_Sigle_Catapult : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public int V_playerId;
     Player V_player;
@@ -65,7 +65,7 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         grounded = Physics2D.Raycast(O_groundcheck.position, -Vector2.up, 0.1f, ground);
         anims.SetBool("floor", grounded);
         AimArm(aimVector.normalized);
-        ArmLayer();
+        flip();
         Jump();
     }
 
@@ -108,30 +108,15 @@ public class PlayerController_Sigle_Catapult : MonoBehaviour
         anims.SetBool("jump", jump);
     }
 
-    void ArmLayer()
+    void flip()
     {
-        if (Vector2.Distance(O_Rhand.position, transform.position) < Vector2.Distance(O_Lhand.position, transform.position))
-        {
-            foreach (SortingGroup s in O_Larm)
-            {
-                s.sortingOrder = 1;
-            }
-            foreach (SortingGroup s in O_Rarm)
-            {
-                s.sortingOrder = 2;
-            }
-        }
-        else
-        {
-            foreach (SortingGroup s in O_Larm)
-            {
-                s.sortingOrder = 2;
-            }
-            foreach (SortingGroup s in O_Rarm)
-            {
-                s.sortingOrder = 1;
-            }
-        }
+        //if (transform.localScale.x == 1 && O_armMidpoint.transform.position.x < transform.position.x)
+        //{
+        //    transform.localScale = new Vector3(-1, 1, 1);
+        //}else if (transform.localScale.x == -1 && O_armMidpoint.transform.position.x > transform.position.x)
+        //{
+        //    transform.localScale = new Vector3(1, 1, 1);
+        //}
     }
 
     void AimArm(Vector2 direction)

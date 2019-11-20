@@ -27,40 +27,56 @@ public class PressurePlate : Interrupteur
         if (v_WeightOnPlate > 0)
         {
             renderer.sprite = v_SpritePressed;
-        }
-
-        else renderer.sprite = v_SpriteUnpressed; 
-
-
-        if (v_WeightOnPlate >= v_WeightNeeded)
-        {
-            ActivateObjects();
+            v_IsTriggered = true;
         }
 
         else
         {
+            v_IsTriggered = false;
+            renderer.sprite = v_SpriteUnpressed;
+        }
+
+        if (v_WeightOnPlate >= v_WeightNeeded && !trigger)
+        {
+            ActivateObjects();
+            trigger = true;
+        }
+
+        else if(v_WeightOnPlate<v_WeightNeeded && !trigger)
+        {
             DeactivateObjects();
-           
+            trigger = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "GrabAble")
+        if(collision.gameObject.tag == "GrabAble" && !v_IsActivated)
         {
+            v_IsActivated = true;
             v_WeightOnPlate += collision.attachedRigidbody.mass;
+            StartCoroutine(WaitForDeflag());
         }
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "GrabAble")
+        if(collision.gameObject.tag == "GrabAble" && !v_IsActivated)
         {
+            v_IsActivated = true;
             v_WeightOnPlate -= collision.attachedRigidbody.mass;
+            StartCoroutine(WaitForDeflag());
+
         }
     }
 
+    IEnumerator WaitForDeflag()
+    {
+        yield return new WaitForSeconds(1.5f);
+        v_IsActivated = false;
+        trigger = false;
+    }
 
     
 }

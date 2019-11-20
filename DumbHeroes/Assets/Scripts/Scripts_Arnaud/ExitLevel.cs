@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ExitLevel : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class ExitLevel : ActivableObjects
 {
-    /*[SerializeField] LayerMask mask;
+    [SerializeField] LayerMask mask;
     List<PlayerController> players = new List<PlayerController>();
+
     SpriteRenderer sRenderer;
     public Color D_FinishColor; // Uniquement tant qu'on a pas de niveaux venant après celui ci
     Color v_origColor;
     public string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
+    bool v_isActive = false;
     private void Awake()
     {
         
@@ -27,13 +29,20 @@ public class ExitLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(v_NextLevelName);
-        if (players.Count >= 1)
-        {
 
-            sRenderer.color = D_FinishColor;
+        if (v_isActive)
+        {
+            Debug.Log(v_NextLevelName);
+            if (players.Count >= 1)
+            {
+                SceneManager.LoadScene(v_NextLevelName);
+                sRenderer.color = D_FinishColor;
+            }
         }
+        
     }
+
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,6 +82,19 @@ public class ExitLevel : MonoBehaviour
 
         return returnValue;
     }
+
+
+    public override void Activate()
+    {
+        v_isActive = true;   
+        base.Activate();
+    }
+
+    public override void Deactivate()
+    {
+        v_isActive = false;
+        base.Deactivate();
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 8)
@@ -85,5 +107,5 @@ public class ExitLevel : MonoBehaviour
                 players.Remove(player);
             }
         }
-    }*/
+    }
 }

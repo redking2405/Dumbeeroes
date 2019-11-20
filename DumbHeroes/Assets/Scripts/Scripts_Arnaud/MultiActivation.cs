@@ -4,97 +4,68 @@ using UnityEngine;
 
 public class MultiActivation : ActivableObjects
 {
-    public List<bool> v_MyBoolList;
+    public List<Interrupteur> v_MyBoolList;
     int countBool=0;
-    public List<ActivableObjects> v_ActivableObjects;
+    public List<ActivableObjects> v_ObjectToActivate;
+    bool trigger;
+    int counter;
     // Start is called before the first frame update
     void Start()
     {
-        
+        counter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (bool b in v_MyBoolList)
-        {
-            int i = 0;
-            if (b)
-            {
-                i++;
-                countBool++;
-            }
-
-            else
-            {
-                i++;
-                continue;
-            }
-
-            
-
-
-
-        }
-
+      
         if (countBool == v_MyBoolList.Count)
         {
-            for (int j = 0; j < v_MyBoolList.Count; j++)
+            for (int j = 0; j < v_ObjectToActivate.Count; j++)
             {
-                v_ActivableObjects[j].Activate();
+                v_ObjectToActivate[j].Activate();
             }
+            counter = 0;
+            trigger = false;
         }
 
         else
         {
-            for (int k = 0; k < v_MyBoolList.Count; k++)
+            for (int k = 0; k < v_ObjectToActivate.Count; k++)
             {
-                v_ActivableObjects[k].Deactivate();
+                v_ObjectToActivate[k].Deactivate();
             }
+            counter = 0;
+            trigger = false;
         }
     }
 
     public override void Activate()
     {
-        int i = 0;
-        foreach(bool b in v_MyBoolList)
-        {
-            if (b)
-            {
-                i++;
-                continue;
-            }
+        counter++;
 
-            else
-            {
-                v_MyBoolList[i] = true;
-            }
-            
-              
-            
+        if (counter==1 && !trigger)
+        {
+            counter = 0;
+            trigger = true;
+            countBool++;
         }
         base.Activate();
     }
 
     public override void Deactivate()
     {
-        int i = 0;
-        foreach (bool b in v_MyBoolList)
+        counter++;
+        if(counter==1 & trigger)
         {
-            if (!b)
-            {
-                i++;
-                continue;
-            }
-
-            else
-            {
-                v_MyBoolList[i] = false;
-            }
-
-
-
+            counter = 0;
+            trigger = false;
+            countBool--;
         }
+    
         base.Deactivate();
     }
+
+    
+
 }
