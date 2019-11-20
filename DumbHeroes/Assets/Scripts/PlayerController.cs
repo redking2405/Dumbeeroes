@@ -126,6 +126,11 @@ public class PlayerController : MonoBehaviour
             LastAim = direction;
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
+
+        Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
+
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
 
         if (V_player.GetButtonDown("Grab"))
