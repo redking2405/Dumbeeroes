@@ -8,8 +8,8 @@ public class ExitLevel : ActivableObjects
     List<PlayerController> players = new List<PlayerController>();
 
     SpriteRenderer sRenderer;
-    public Color D_FinishColor; // Uniquement tant qu'on a pas de niveaux venant après celui ci
-    Color v_origColor;
+    public Sprite v_OpenSprite; // Uniquement tant qu'on a pas de niveaux venant après celui ci
+    Sprite v_origColor;
     public string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
     bool v_isActive = false;
     private void Awake()
@@ -17,7 +17,7 @@ public class ExitLevel : ActivableObjects
         
         sRenderer = GetComponent<SpriteRenderer>();
 
-        v_origColor=sRenderer.color;
+        v_origColor=sRenderer.sprite;
     }
 
     // Start is called before the first frame update
@@ -32,11 +32,11 @@ public class ExitLevel : ActivableObjects
 
         if (v_isActive)
         {
-            Debug.Log(v_NextLevelName);
+           
             if (players.Count >= 1)
             {
                 SceneManager.LoadScene(v_NextLevelName);
-                sRenderer.color = D_FinishColor;
+                sRenderer.sprite = v_OpenSprite;
             }
         }
         
