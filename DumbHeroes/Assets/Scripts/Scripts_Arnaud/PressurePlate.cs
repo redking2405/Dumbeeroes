@@ -9,7 +9,7 @@ public class PressurePlate : Interrupteur
     [SerializeField] int v_WeightNeeded; //in number of objects
     
     List<GameObject> v_ObjectOnPlate = new List<GameObject>();
-    float v_WeightOnPlate;
+    [SerializeField]float v_WeightOnPlate;
     
 
     // Start is called before the first frame update
@@ -36,10 +36,10 @@ public class PressurePlate : Interrupteur
             renderer.sprite = v_SpriteUnpressed;
         }
 
-        if (v_WeightOnPlate >= v_WeightNeeded && !trigger)
+        if (v_WeightOnPlate >= v_WeightNeeded && v_IsTriggered)
         {
             ActivateObjects();
-            trigger = true;
+            v_IsTriggered = false;
         }
 
         else if(v_WeightOnPlate<v_WeightNeeded && !trigger)

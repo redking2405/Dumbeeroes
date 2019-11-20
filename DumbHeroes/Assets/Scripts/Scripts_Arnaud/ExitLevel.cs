@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 public class ExitLevel : ActivableObjects
 {
     [SerializeField] LayerMask mask;
@@ -12,6 +13,8 @@ public class ExitLevel : ActivableObjects
     Sprite v_origColor;
     public string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
     bool v_isActive = false;
+    [SerializeField] int totalPlayers;
+    
     private void Awake()
     {
         
@@ -23,6 +26,7 @@ public class ExitLevel : ActivableObjects
     // Start is called before the first frame update
     void Start()
     {
+        totalPlayers = CharacterSpawn.PlayerSpawnedList.Count;
         
     }
 
@@ -33,7 +37,7 @@ public class ExitLevel : ActivableObjects
         if (v_isActive)
         {
            
-            if (players.Count >= 1)
+            if (players.Count >= totalPlayers)
             {
                 SceneManager.LoadScene(v_NextLevelName);
                 sRenderer.sprite = v_OpenSprite;
@@ -47,17 +51,21 @@ public class ExitLevel : ActivableObjects
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (v_isActive)
         {
-            PlayerController player = collision.GetComponent<PlayerController>();
-
-
-            if(!CheckIfAlreadyInList(player))
+            if (collision.gameObject.layer==8)
             {
-                players.Add(player);
+                PlayerController player = collision.GetComponent<PlayerController>();
+
+
+                if (!CheckIfAlreadyInList(player))
+                {
+                    players.Add(player);
+                }
+
             }
-            
         }
+        
     }
 
     bool CheckIfAlreadyInList(PlayerController pPlayer)
@@ -97,15 +105,19 @@ public class ExitLevel : ActivableObjects
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (v_isActive)
         {
-
-            PlayerController player = collision.GetComponent<PlayerController>();
-
-            if (CheckIfAlreadyInList(player))
+            if (collision.gameObject.layer == 8)
             {
-                players.Remove(player);
+
+                PlayerController player = collision.GetComponent<PlayerController>();
+
+                if (CheckIfAlreadyInList(player))
+                {
+                    players.Remove(player);
+                }
             }
         }
+        
     }
 }

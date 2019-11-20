@@ -477,6 +477,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
+        type: 3}
+      propertyPath: v_SpriteUnpressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 8efece909a1dd5d4c8218400a3e21755,
+        type: 3}
+    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
+        type: 3}
+      propertyPath: v_SpritePressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 812414c2cb09f9b40888f4c568c533f6,
+        type: 3}
+    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
+        type: 3}
+      propertyPath: v_ObjectToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 830838518}
     - target: {fileID: 8298777961072880081, guid: 830564d8538ace743bf093f096b7b1ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,23 +549,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
-        type: 3}
-      propertyPath: v_SpriteUnpressed
-      value: 
-      objectReference: {fileID: 21300000, guid: 298da636d153a56458f4076d42fa7d81,
-        type: 3}
-    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
-        type: 3}
-      propertyPath: v_SpritePressed
-      value: 
-      objectReference: {fileID: 21300000, guid: c0c2cfc86a6e7a846ab953ca1d4c6787,
-        type: 3}
-    - target: {fileID: 8298777961072880083, guid: 830564d8538ace743bf093f096b7b1ec,
-        type: 3}
-      propertyPath: v_ObjectToActivate.Array.data[0]
-      value: 
-      objectReference: {fileID: 830838518}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830564d8538ace743bf093f096b7b1ec, type: 3}
 --- !u!1 &917050678
@@ -938,16 +938,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
-        type: 3}
-      propertyPath: mask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
-        type: 3}
-      propertyPath: v_NextLevelName
-      value: 2_TUTO Friends
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
