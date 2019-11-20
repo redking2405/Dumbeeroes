@@ -32,10 +32,10 @@ public class Interrupteur : MonoBehaviour
             trigger = true;
         }
 
-        else if(!v_IsActivated && !trigger)
+        else if(!v_IsActivated && trigger)
         {
             DeactivateObjects();
-            trigger = true;
+            trigger = false;
         }
     }
 
@@ -48,7 +48,7 @@ public class Interrupteur : MonoBehaviour
                 v_IsActivated = false;
                 v_IsTriggered = false;
                 renderer.sprite = v_SpriteUnpressed;
-                trigger = false;
+                v_ReInitialised = false;
 
             }
             else
