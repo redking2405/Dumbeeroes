@@ -62,7 +62,7 @@ public class PressurePlate : Interrupteur
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "Player" && !v_IsActivated)
+        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "Player") && !v_IsActivated)
         {
             v_IsActivated = true;
             v_WeightOnPlate -= collision.attachedRigidbody.mass;
