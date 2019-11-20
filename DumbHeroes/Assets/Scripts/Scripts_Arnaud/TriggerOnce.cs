@@ -13,9 +13,11 @@ public class TriggerOnce : Interrupteur
     // Update is called once per frame
     protected new void Update()
     {
-        if (v_IsActivated)
+        if (v_IsActivated && !trigger)
         {
+
             ActivateObjects();
+            trigger = true;
         }
     }
 
@@ -24,6 +26,7 @@ public class TriggerOnce : Interrupteur
         if (collision.gameObject.tag == "GrabAble")
         {
             v_IsActivated = true;
+            v_IsTriggered = true;
         }
     }
 }
