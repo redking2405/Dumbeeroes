@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: e6173310ba733f34ea5f0797afe52da9
   - enabled: 1
+    path: Assets/Scenes/LevelDesign/TUTORIELS/0_Take crates.unity
+    guid: 162e559087fa48d4ea354a0bf252e82c
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/TUTORIELS/0_1_Take crates 1.unity
+    guid: 1aa3c2a727142024e97f243179ba2350
+  - enabled: 1
     path: Assets/Scenes/LevelDesign/TUTORIELS/1_TUTO Box.unity
     guid: 915e9380f17e596498213d03372c821c
   - enabled: 1
@@ -26,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelDesign/TUTORIELS/5_TUTO_2 2B_Hold.unity
     guid: 3461ec4a27cbc3b4a9d254246bb19ef5
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/Throw Crates.unity
+    guid: 9d1074cce651bcc4ab14275bb1b35d52
   m_configObjects: {}

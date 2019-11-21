@@ -446,6 +446,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6505036453710900127, guid: cc605a85686d2b842a05b8dceaad90a7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505036455233769329, guid: cc605a85686d2b842a05b8dceaad90a7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc605a85686d2b842a05b8dceaad90a7, type: 3}
 --- !u!114 &830838518 stripped
@@ -485,12 +495,12 @@ PrefabInstance:
     - target: {fileID: 8298777961072880081, guid: 830564d8538ace743bf093f096b7b1ec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.77
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 8298777961072880081, guid: 830564d8538ace743bf093f096b7b1ec,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.863799
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8298777961072880081, guid: 830564d8538ace743bf093f096b7b1ec,
         type: 3}
@@ -884,6 +894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FINISH LINE
       objectReference: {fileID: 0}
+    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
+        type: 3}
+      propertyPath: v_NextLevelName
+      value: 2_TUTO Friends
+      objectReference: {fileID: 0}
     - target: {fileID: 7595462528463687431, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -938,11 +953,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
-        type: 3}
-      propertyPath: v_NextLevelName
-      value: 2_TUTO Friends
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
