@@ -614,17 +614,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 209061298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0abe7c72c47e63e4dbdfaac453663e00, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f26dc26f8b74ee4ea5ee1db071ae1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v_Angle: 30
+  v_Angle: 0
   v_Force: 500
   v_Position: {fileID: 1520448126}
   v_TimerMax: 2
   v_ToLaunch: {fileID: 0}
-  v_PrefabCanonBall: {fileID: 3625201182436128497, guid: 263c2878236aab94cb7b6ffb145c275b,
+  v_PrefabCanonBall: {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715,
     type: 3}
+  v_Ready: 0
   v_Loaded: 0
+  v_AngleMax: 30
+  v_AngleMin: 75
+  v_TimerRotateMax: 5
 --- !u!50 &209061300
 Rigidbody2D:
   serializedVersion: 4

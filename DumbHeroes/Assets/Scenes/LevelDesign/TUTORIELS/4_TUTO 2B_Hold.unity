@@ -851,11 +851,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FINISH LINE
       objectReference: {fileID: 0}
-    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
-        type: 3}
-      propertyPath: v_NextLevelName
-      value: 5_TUTO_2 2B_Hold
-      objectReference: {fileID: 0}
     - target: {fileID: 7595462528463687431, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,6 +905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
+        type: 3}
+      propertyPath: v_NextLevelName
+      value: 5_TUTO_2 2B_Hold
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
@@ -1102,7 +1102,7 @@ PrefabInstance:
     - target: {fileID: 6505036453710900127, guid: cc605a85686d2b842a05b8dceaad90a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.21
+      value: -14.1
       objectReference: {fileID: 0}
     - target: {fileID: 6505036455233769329, guid: cc605a85686d2b842a05b8dceaad90a7,
         type: 3}
@@ -1284,19 +1284,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
         type: 3}
+      propertyPath: v_MyInteList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
+        type: 3}
       propertyPath: v_MyBoolList.Array.data[0]
-      value: 
-      objectReference: {fileID: 345100801}
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
         type: 3}
       propertyPath: v_MyBoolList.Array.data[1]
-      value: 
-      objectReference: {fileID: 879309561}
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
         type: 3}
       propertyPath: v_ObjectToActivate.Array.data[0]
       value: 
       objectReference: {fileID: 993646591}
+    - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
+        type: 3}
+      propertyPath: v_MyInteList.Array.data[0]
+      value: 
+      objectReference: {fileID: 879309561}
+    - target: {fileID: 3418059763076389500, guid: 0205376254d9fe7419f05c5c9715966d,
+        type: 3}
+      propertyPath: v_MyInteList.Array.data[1]
+      value: 
+      objectReference: {fileID: 345100801}
     - target: {fileID: 3418059763076389503, guid: 0205376254d9fe7419f05c5c9715966d,
         type: 3}
       propertyPath: m_LocalPosition.x

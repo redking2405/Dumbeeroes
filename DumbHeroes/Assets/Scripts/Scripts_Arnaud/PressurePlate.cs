@@ -27,7 +27,7 @@ public class PressurePlate : Interrupteur
         if (v_WeightOnPlate > 0)
         {
             renderer.sprite = v_SpritePressed;
-            v_IsTriggered = true;
+            
         }
 
         else
@@ -36,10 +36,11 @@ public class PressurePlate : Interrupteur
             renderer.sprite = v_SpriteUnpressed;
         }
 
-        if (v_WeightOnPlate >= v_WeightNeeded && v_IsTriggered)
+        if (v_WeightOnPlate >= v_WeightNeeded && !v_IsTriggered)
         {
+            v_IsTriggered = true;
             ActivateObjects();
-            v_IsTriggered = false;
+            
         }
 
         else if(v_WeightOnPlate<v_WeightNeeded && !trigger)

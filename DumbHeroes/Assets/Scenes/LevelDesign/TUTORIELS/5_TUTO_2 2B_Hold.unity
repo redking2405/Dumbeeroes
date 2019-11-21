@@ -463,11 +463,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FINISH LINE
       objectReference: {fileID: 0}
-    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
-        type: 3}
-      propertyPath: v_NextLevelName
-      value: Throw Crates
-      objectReference: {fileID: 0}
     - target: {fileID: 7595462528463687431, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -522,6 +517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
+        type: 3}
+      propertyPath: v_NextLevelName
+      value: Throw Crates
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
@@ -1685,9 +1685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cd89c82cb20074f88e81694ecfb475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v_MyBoolList:
+  v_MyInteList:
   - {fileID: 879309561}
   - {fileID: 222550059}
+  v_MyBoolList: 0000
   v_ObjectToActivate:
   - {fileID: 1124967001}
 --- !u!4 &1966877745

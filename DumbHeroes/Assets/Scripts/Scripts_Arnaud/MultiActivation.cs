@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MultiActivation : ActivableObjects
 {
-    public List<Interrupteur> v_MyBoolList;
+    public List<Interrupteur> v_MyInteList;
+    public List<bool> v_MyBoolList;
     int countBool=0;
     public List<ActivableObjects> v_ObjectToActivate;
     bool trigger;
@@ -18,53 +19,52 @@ public class MultiActivation : ActivableObjects
     // Update is called once per frame
     void Update()
     {
-      
-        if (countBool == v_MyBoolList.Count)
+
+        if (CheckIfIsOpen())
         {
-            for (int j = 0; j < v_ObjectToActivate.Count; j++)
+            for(int i = 0; i<v_ObjectToActivate.Count; i++)
             {
-                v_ObjectToActivate[j].Activate();
+                v_ObjectToActivate[i].Activate();
             }
-            counter = 0;
-            trigger = false;
         }
 
         else
         {
-            for (int k = 0; k < v_ObjectToActivate.Count; k++)
+            for (int j = 0; j < v_ObjectToActivate.Count; j++)
             {
-                v_ObjectToActivate[k].Deactivate();
+                v_ObjectToActivate[j].Deactivate();
             }
-            counter = 0;
-            trigger = false;
         }
     }
 
-    public override void Activate()
+    bool CheckIfIsOpen()
     {
-        counter++;
+        bool valeurRetour =false;
 
-        if (counter==1 && !trigger)
+        for(int i=0; i < v_MyInteList.Count; i++)
         {
-            counter = 0;
-            trigger = true;
-            countBool++;
+            
+            v_MyBoolList[i] = v_MyInteList[i].v_IsTriggered;
+            
         }
-        base.Activate();
+        countBool = 0;
+        for (int j=0; j<v_MyBoolList.Count; j++)
+        {
+            
+            if (v_MyBoolList[j])
+            {
+                countBool++;
+            }
+        }
+        if (countBool == v_MyBoolList.Count)
+        {
+            valeurRetour = true;
+        }
+        return valeurRetour;
     }
 
-    public override void Deactivate()
-    {
-        counter++;
-        if(counter==1 & trigger)
-        {
-            counter = 0;
-            trigger = false;
-            countBool--;
-        }
-    
-        base.Deactivate();
-    }
+
+   
 
     
 

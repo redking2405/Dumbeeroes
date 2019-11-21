@@ -36,13 +36,15 @@ public class ExitLevel : ActivableObjects
 
         if (v_isActive)
         {
-           
+            sRenderer.sprite = v_OpenSprite;
             if (players.Count >= totalPlayers)
             {
                 SceneManager.LoadScene(v_NextLevelName);
-                sRenderer.sprite = v_OpenSprite;
+
             }
         }
+
+        else sRenderer.sprite = v_origColor;
         
     }
 

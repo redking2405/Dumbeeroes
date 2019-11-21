@@ -26642,7 +26642,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  throwForce: 300
+  throwForce: 500
   throwTimeMax: 1.5
 --- !u!210 &7797070009734071024
 SortingGroup:
