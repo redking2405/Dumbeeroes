@@ -5,7 +5,7 @@ using Rewired;
 
 public class CharacterSpawn : MonoBehaviour
 {
-    public static List<Player> PlayerSpawnedList= new List<Player>();
+    public static List<PlayerData> PlayerSpawnedList= new List<PlayerData>();
     public GameObject[] PrefabPlayer;
     
 
@@ -28,7 +28,7 @@ public class CharacterSpawn : MonoBehaviour
             // !PlayerToSpawnList.Contains(p) /*&& p.GetAnyButton()*/
             if (p.controllers.joystickCount > 0)
             {
-                PlayerSpawnedList.Add(p);
+                
                 SpawnPlayer(p);
             }
         }
@@ -38,7 +38,11 @@ public class CharacterSpawn : MonoBehaviour
     void SpawnPlayer(Player PlayerToSpawn)
     {
         GameObject PlayerObject = Instantiate(PrefabPlayer[PlayerToSpawn.id], transform.GetChild(PlayerToSpawn.id).position , Quaternion.identity);
-        PlayerObject.GetComponentInChildren<PlayerController>().V_playerId = PlayerToSpawn.id;
+        PlayerController pc = PlayerObject.GetComponentInChildren<PlayerController>();
+
+
+        pc.V_playerId = PlayerToSpawn.id;
+        PlayerSpawnedList.Add(new PlayerData(PlayerToSpawn, pc.gameObject));
     }
 
     private void OnDestroy()

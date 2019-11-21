@@ -23,8 +23,8 @@
 			Cull Off
 
 			//Lighting Off
-			//ZWrite Off
-			Blend One OneMinusSrcAlpha
+			ZTest Off
+			Blend SrcAlpha OneMinusSrcAlpha
 
 			Pass
 			{
@@ -119,4 +119,5 @@
 			ENDCG
 			}
 		}
+		FallBack "Diffuse"
 }
