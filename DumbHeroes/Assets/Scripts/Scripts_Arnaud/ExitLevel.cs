@@ -14,7 +14,7 @@ public class ExitLevel : ActivableObjects
     public string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
     bool v_isActive = false;
     [SerializeField] int totalPlayers;
-    
+    bool trigger = false;
     private void Awake()
     {
         
@@ -37,10 +37,10 @@ public class ExitLevel : ActivableObjects
         if (v_isActive)
         {
             sRenderer.sprite = v_OpenSprite;
-            if (players.Count >= totalPlayers)
+            if (players.Count >= totalPlayers && !trigger)
             {
-                SceneManager.LoadScene(v_NextLevelName);
-
+                FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, v_NextLevelName));
+                trigger = true;
             }
         }
 
