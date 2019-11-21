@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: left_hand
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: left_hand/Main-ouverte-gauche
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand/Main-ouverte-gauche
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -98,7 +98,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: left_hand/part_grab_left
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand/part_grab_left
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -126,7 +126,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: right_hand
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -154,7 +154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: right_hand/Main-ouverte-droite
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand/Main-ouverte-droite
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -182,7 +182,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: right_hand/part_grab_right
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand/part_grab_right
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -194,42 +194,42 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 15022912
+      path: 1064325333
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2854194967
+      path: 1352398397
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1044911669
+      path: 2872109605
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2941725522
+      path: 2104280058
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1815231189
+      path: 3528299337
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2032019250
+      path: 2947387231
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -282,7 +282,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: left_hand
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -310,7 +310,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: left_hand/Main-ouverte-gauche
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand/Main-ouverte-gauche
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -338,7 +338,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: left_hand/part_grab_left
+    path: Body/bones/body1/body2/body3/left_arm1/left_arm2/left_hand/part_grab_left
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -366,7 +366,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: right_hand
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -394,7 +394,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: right_hand/Main-ouverte-droite
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand/Main-ouverte-droite
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -422,7 +422,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: right_hand/part_grab_right
+    path: Body/bones/body1/body2/body3/right_arm1/right_arm2/right_hand/part_grab_right
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
