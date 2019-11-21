@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PrefabPlayer:
-  - {fileID: 7797070009761210348, guid: 2b7eed0c04c1306409ab0c4f180c7aec, type: 3}
-  - {fileID: 7797070009761210348, guid: 2b7eed0c04c1306409ab0c4f180c7aec, type: 3}
-  - {fileID: 7797070009761210348, guid: 2b7eed0c04c1306409ab0c4f180c7aec, type: 3}
-  - {fileID: 7797070009761210348, guid: 2b7eed0c04c1306409ab0c4f180c7aec, type: 3}
+  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
 --- !u!1 &6505036455233769328
 GameObject:
   m_ObjectHideFlags: 0

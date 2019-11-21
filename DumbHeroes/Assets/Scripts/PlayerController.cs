@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float V_armSpeed = 0;
     [SerializeField]
-    Transform O_Lhand, O_Rhand;
+    Transform O_Lhand, O_Rhand, armTarget;
     [SerializeField]
     SortingGroup[] O_Rarm, O_Larm;
     bool grounded = false;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     bool regrab;
     float recRotation;
     float grabpointDist;
-    Vector2 recDirection;
+    //Vector2 recDirection;
     Vector2 LastAim;
 
     int grabbedRecLayer;
@@ -114,13 +114,16 @@ public class PlayerController : MonoBehaviour
 
     void flip()
     {
-        //if (transform.localScale.x == 1 && O_armMidpoint.transform.position.x < transform.position.x)
-        //{
-        //    transform.localScale = new Vector3(-1, 1, 1);
-        //}else if (transform.localScale.x == -1 && O_armMidpoint.transform.position.x > transform.position.x)
-        //{
-        //    transform.localScale = new Vector3(1, 1, 1);
-        //}
+        if (transform.localScale.x == 1 && O_armMidpoint.transform.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            armTarget.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (transform.localScale.x == -1 && O_armMidpoint.transform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            armTarget.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void AimArm(Vector2 direction)
@@ -133,9 +136,12 @@ public class PlayerController : MonoBehaviour
 
         Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
+        if (CarriedObject != null && getHeldWeight() == Objectweight.Light)
+        {
+            O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
 
-        recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
+        //recDirection = /*(O_armMidpoint.transform.position - transform.position).normalized;*/ direction;
 
         if (V_player.GetButtonDown("Grab"))
         {
@@ -198,8 +204,8 @@ public class PlayerController : MonoBehaviour
                 float cprc = charge / throwTimeMax;
                 V_player.SetVibration(0, vibrateCurve.Evaluate(cprc));
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
-                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1.4f, cprc);
-                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + recDirection * 2), Color.red);
+                O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1f, cprc);
+                Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + LastAim * 2), Color.red);
             }
         }
         if (V_player.GetButtonUp("Throw"))
@@ -214,7 +220,7 @@ public class PlayerController : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        CarriedObject.AddForce(recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,ForceMode2D.Impulse);
+        CarriedObject.AddForce(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,ForceMode2D.Impulse);
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;
