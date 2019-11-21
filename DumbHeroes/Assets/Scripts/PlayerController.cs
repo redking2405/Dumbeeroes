@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
         get { return O_armMidpoint.connectedBody; }
     }
 
+    enum Objectweight { Light, Medium, Heavy };
+
     [SerializeField]
     float V_moveSpeed;
     [SerializeField]
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
     Vector2 recDirection;
     Vector2 LastAim;
 
+    int grabbedRecLayer;
+
     bool jump;
     float jumpChrono;
 
@@ -73,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
         {
-        rb.AddForce(new Vector2(1000 * V_player.GetAxis("MoveX"), 0));
+        rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0));
         //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
         //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
         anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
@@ -129,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
+        O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
 
         recDirection = (O_armMidpoint.transform.position - transform.position).normalized;
 
@@ -172,8 +176,13 @@ public class PlayerController : MonoBehaviour
                     anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
                     O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
+                    grabbedRecLayer = CarriedObject.gameObject.layer;
                     CarriedObject.gameObject.layer = 9;
                     CarriedObject.transform.parent = O_armMidpoint.transform;
+                    if(getHeldWeight() == Objectweight.Light)
+                    {
+                        O_armMidpoint.connectedAnchor = Vector2.zero;
+                    }
                     O_armMidpoint.enabled = true;
                 }
             }
@@ -197,7 +206,6 @@ public class PlayerController : MonoBehaviour
         {
             if (CarriedObject != null && charging)
             {
-                Debug.Log("throw");
                 ThrowObject();
             }
         }
@@ -206,21 +214,37 @@ public class PlayerController : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        CarriedObject.velocity = recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce;
+        CarriedObject.AddForce(recDirection * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,ForceMode2D.Impulse);
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;
         DropObject();
     }
 
-    void DropObject()
+    public void DropObject()
     {
         anims.SetBool("grab", false);
-        CarriedObject.gameObject.layer = 0;
+        CarriedObject.gameObject.layer = grabbedRecLayer;
         CarriedObject.transform.parent = null;
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
+    }
+
+    Objectweight getHeldWeight()
+    {
+        float mass = CarriedObject.mass;
+        if(mass >= 100)
+        {
+            return Objectweight.Heavy;
+        }else if(mass >= 50)
+        {
+            return Objectweight.Medium;
+        }
+        else
+        {
+            return Objectweight.Light;
+        }
     }
 
     IEnumerator ShakeController(float power, float time, int motor, bool both)
@@ -264,7 +288,8 @@ public class PlayerController : MonoBehaviour
         {
             if (closest.GetComponent<Outline>())
             {
-                closest.GetComponent<SpriteRenderer>().material = closest.GetComponent<Outline>().outlineMat;
+                closest.GetComponent<Outline>().OutlineDisplay(true);
+
             }
         }
     }

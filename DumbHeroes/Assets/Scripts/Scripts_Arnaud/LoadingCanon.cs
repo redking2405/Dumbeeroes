@@ -5,8 +5,8 @@ using UnityEngine;
 public class LoadingCanon : MonoBehaviour
 {
     Canon v_MyCanon;
-    Rigidbody2D v_Target;
-
+    GameObject v_Target;
+    
     // Start is called before the first frame update
 
     private void Awake()
@@ -16,17 +16,34 @@ public class LoadingCanon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "GrabAble")
-        {
-            v_MyCanon.v_Loaded = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
         if (collision.gameObject.tag == "GrabAble")
         {
-            v_MyCanon.v_Loaded = false;
+
+            if (!v_MyCanon.v_Loaded && !v_MyCanon.v_Ready)
+            {
+                StartCoroutine(LoadCanon(collision.gameObject));
+            }
+            
+            
+            
+                
+            
+            
+            
         }
+
+        
+    }
+
+    
+    
+    IEnumerator LoadCanon(GameObject target)
+    {
+        yield return new WaitForSeconds(1.0f);
+        v_MyCanon.v_Loaded = true;
+        target.transform.position = v_MyCanon.v_Position.position;
+        v_MyCanon.v_ToLaunch = target;
+        
+       
     }
 }

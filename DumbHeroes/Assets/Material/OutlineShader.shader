@@ -45,14 +45,16 @@
 				struct v2f {
 					float4 pos : SV_POSITION;
 					half2 uv : TEXCOORD0;
+					fixed4 color : COLOR;
 				};
 				
 
-				v2f SpriteVert(appdata_base v)
+				v2f SpriteVert(appdata_full v)
 				{
 					v2f o;
 					o.pos = UnityObjectToClipPos(v.vertex);
 					o.uv = v.texcoord;
+					o.color = v.color;
 
 					return o;
 				}
@@ -68,24 +70,50 @@
 				{
 				
 					half4 c = tex2D(_MainTex, IN.uv);
+					c*=IN.color;
 					//c.rgb *= c.a;
 					half4 outlineC = _Color;
 					outlineC.a *= ceil(c.a);
 					outlineC.rgb *= outlineC.a;
+					int j= _OutlineSize;
 
-					int i = _OutlineSize;
 					if (_Outline==0)
 					{
-						i=0;
+						j=0;
 					}
 					
+					float totalAlpha = 1.0;
+					float nearestAlphaCount = -1;
 
-					fixed pixelUp = tex2D(_MainTex, IN.uv + fixed2(0,  i*_MainTex_TexelSize.y)).a;
-					fixed pixelDown = tex2D(_MainTex, IN.uv - fixed2(0, i*_MainTex_TexelSize.y)).a;
-					fixed pixelRight = tex2D(_MainTex, IN.uv + fixed2(i * _MainTex_TexelSize.x, 0)).a;
-					fixed pixelLeft = tex2D(_MainTex, IN.uv - fixed2(i * _MainTex_TexelSize.x, 0)).a;
+					[unroll(64)]
+					for (int i = 1; i < j + 1; i++) {
+						fixed pixelUp = tex2D(_MainTex, IN.uv + fixed2(0, i*_MainTex_TexelSize.y)).a;
+						fixed pixelDown = tex2D(_MainTex, IN.uv - fixed2(0, i*_MainTex_TexelSize.y)).a;
+						fixed pixelRight = tex2D(_MainTex, IN.uv + fixed2(i * _MainTex_TexelSize.x, 0)).a;
+						fixed pixelLeft = tex2D(_MainTex, IN.uv - fixed2(i * _MainTex_TexelSize.x, 0)).a;
 
-					return lerp(outlineC, c , ceil(pixelUp * pixelDown * pixelRight * pixelLeft));
+						totalAlpha = totalAlpha * pixelUp * pixelDown * pixelRight * pixelLeft;
+
+						if (totalAlpha == 0 && nearestAlphaCount == -1)
+						{
+							nearestAlphaCount= _OutlineSize-i;
+						}
+					}
+
+					float finalAlpha= nearestAlphaCount / _OutlineSize;
+
+					if (nearestAlphaCount == -1)
+					{
+						finalAlpha=1;
+					}
+
+					if (totalAlpha == 0) {
+						c.rgba = lerp(  fixed4(c.r,c.g,c.b,1), _Color, finalAlpha);
+					}
+
+					c.rgb *= c.a;
+
+					return c;
 					
 				}
 			ENDCG

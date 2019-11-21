@@ -6,23 +6,23 @@ public class Canon : ActivableObjects
 {
     public float v_Angle;
     public float v_Force;
-    [SerializeField] Transform v_Position;
-    [SerializeField] float v_TimerMax;
-    float v_Timer;
-    GameObject v_ToLaunch;
-    [SerializeField] GameObject v_PrefabCanonBall;
-    bool v_Launched;
-    bool v_Ready;
+    [SerializeField]public Transform v_Position;
+    [SerializeField]protected float v_TimerMax;
+    protected float v_Timer;
+    public GameObject v_ToLaunch;
+    [SerializeField]protected GameObject v_PrefabCanonBall;
+    protected bool v_Launched;
+    public bool v_Ready;
     public bool v_Loaded;
-    bool canShoot;
+    protected bool canShoot;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         v_Timer = v_TimerMax;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (canShoot)
         {
@@ -62,7 +62,16 @@ public class Canon : ActivableObjects
         v_Timer = v_TimerMax;
         if (v_Loaded)
         {
+            Rigidbody2D rbd = v_ToLaunch.GetComponent<Rigidbody2D>();
+            if (rbd)
+            {
+                var direction=Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right;
+                direction = direction.normalized;
+                rbd.AddForce(direction * v_Force, ForceMode2D.Impulse);
+                v_ToLaunch = null;
+                v_Loaded = false;
 
+            }
         }
 
         else
