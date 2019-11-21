@@ -288,7 +288,8 @@ public class PlayerController : MonoBehaviour
         {
             if (closest.GetComponent<Outline>())
             {
-                closest.GetComponent<SpriteRenderer>().material = closest.GetComponent<Outline>().outlineMat;
+                closest.GetComponent<Outline>().OutlineDisplay(true);
+
             }
         }
     }
