@@ -9,7 +9,7 @@ public class Interrupteur : MonoBehaviour
     protected SpriteRenderer renderer;
     [SerializeField] protected ActivableObjects[] v_ObjectToActivate;
     protected bool v_IsActivated;
-    bool v_ReInitialised;
+    bool v_ReInitialised = false;
     public bool v_IsTriggered = false;
     protected bool trigger = false;
     protected void Awake()
@@ -26,17 +26,7 @@ public class Interrupteur : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (v_IsActivated && !trigger)
-        {
-            ActivateObjects();
-            trigger = true;
-        }
-
-        else if(!v_IsActivated && trigger)
-        {
-            DeactivateObjects();
-            trigger = false;
-        }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +38,8 @@ public class Interrupteur : MonoBehaviour
                 v_IsActivated = false;
                 v_IsTriggered = false;
                 renderer.sprite = v_SpriteUnpressed;
-                
+                DeactivateObjects();
+
 
             }
             else
@@ -56,6 +47,7 @@ public class Interrupteur : MonoBehaviour
                 v_IsActivated = true;
                 v_IsTriggered = true;
                 renderer.sprite = v_SpritePressed;
+                ActivateObjects();
             }
         }
     }

@@ -9,11 +9,11 @@ public class DoorScript : ActivableObjects
 
     public Transform v_Destination;
     Vector3 v_OriginalPosition;
-    bool v_Open;
+    [SerializeField] bool v_Open;
     [SerializeField] float v_TimerMax;
     float v_Timer;
-    [SerializeField] bool v_IsMoving;
-
+     bool v_IsMoving;
+    [SerializeField] bool reachDest;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class DoorScript : ActivableObjects
                 v_Timer -= Time.deltaTime;
                 float ratio = v_Timer / 3f;
                 ratio = 1f - ratio;
-                
+                reachDest = false;
                 transform.position = Vector3.Lerp(transform.position, v_Destination.position, ratio);
             }
             
@@ -39,6 +39,7 @@ public class DoorScript : ActivableObjects
 
             if(transform.position == v_Destination.position)
             {
+                reachDest = true;
                 v_IsMoving = false;
             }
             if (!v_IsMoving)
@@ -54,6 +55,7 @@ public class DoorScript : ActivableObjects
                 v_Timer -= Time.deltaTime;
                 float ratio = v_Timer / 3f;
                 ratio = 1f - ratio;
+                reachDest = false;
                 transform.position=Vector3.Lerp(transform.position, v_OriginalPosition, ratio);
 
             }
@@ -62,6 +64,7 @@ public class DoorScript : ActivableObjects
 
             if (transform.position == v_OriginalPosition)
             {
+               reachDest = true;
                 v_IsMoving = false;
             }
             if (!v_IsMoving)
@@ -81,8 +84,12 @@ public class DoorScript : ActivableObjects
 
     public override void Deactivate()
     {
-        v_Open = false;
-        v_IsMoving = true;
+        if (reachDest)
+        {
+            v_Open = false;
+            v_IsMoving = true;
+        }
+        
         base.Deactivate();
     }
 }
