@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using Rewired;
 
@@ -71,8 +72,15 @@ public class PlayerController : MonoBehaviour
         AimArm(aimVector.normalized);
         flip();
         Jump();
+        Reload();
     }
-
+    private void Reload()
+    {
+        if (V_player.GetButtonDown("Reload"))
+        {
+            FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, SceneManager.GetActiveScene().name));
+        }
+    }
     private void FixedUpdate()
     {
         if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)

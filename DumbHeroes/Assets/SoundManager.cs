@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
+
+
 
     public List<AudioSource> musicList;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Destroy(this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        
+        //DontDestroyOnLoad(gameObject);
         if (musicList.Count > 0)
         {
             musicList[0].Play();
@@ -20,5 +35,10 @@ public class SoundManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 }

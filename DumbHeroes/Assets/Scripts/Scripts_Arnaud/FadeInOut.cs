@@ -23,8 +23,8 @@ public class FadeInOut : MonoBehaviour
         {
             Instance = this;
         }
-        else Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        else Destroy(this.gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     void OnEnable()
     {
@@ -70,7 +70,11 @@ public class FadeInOut : MonoBehaviour
 
     private void OnDestroy()
     {
-        Instance = null;
+        if (Instance != null)
+        {
+            Instance = null;
+        }
+        
     }
 }
 
