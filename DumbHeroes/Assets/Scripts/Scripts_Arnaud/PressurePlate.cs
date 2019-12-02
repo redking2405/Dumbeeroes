@@ -22,7 +22,10 @@ public class PressurePlate : Interrupteur
     protected new void Update()
     {
 
-
+        if (v_WeightOnPlate < 0) //empecher les mass négatives qui peuvent foutre la merde
+        {
+            v_WeightOnPlate = 0;
+        }
 
         if (v_WeightOnPlate > 0)
         {
@@ -52,9 +55,9 @@ public class PressurePlate : Interrupteur
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag=="Player") && !v_IsActivated)
+        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag=="Player"))
         {
-            v_IsActivated = true;
+            
             v_WeightOnPlate += collision.attachedRigidbody.mass;
         }
     }
@@ -62,21 +65,16 @@ public class PressurePlate : Interrupteur
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "Player") && v_IsActivated)
+        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "Player"))
         {
-            v_IsActivated = false;
+           
             v_WeightOnPlate -= collision.attachedRigidbody.mass;
-            //StartCoroutine(WaitForDeflag());
+            
 
         }
     }
 
-    IEnumerator WaitForDeflag()
-    {
-        yield return new WaitForSeconds(1.5f);
-        v_IsActivated = false;
-        trigger = false;
-    }
+   
 
     
 }
