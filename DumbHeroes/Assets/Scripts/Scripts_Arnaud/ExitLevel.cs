@@ -53,8 +53,7 @@ public class ExitLevel : ActivableObjects
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (v_isActive)
-        {
+       
             if (collision.gameObject.layer==8)
             {
                 PlayerController player = collision.GetComponent<PlayerController>();
@@ -66,9 +65,11 @@ public class ExitLevel : ActivableObjects
                 }
 
             }
-        }
+       
         
     }
+
+    
 
     bool CheckIfAlreadyInList(PlayerController pPlayer)
     {
@@ -107,8 +108,7 @@ public class ExitLevel : ActivableObjects
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (v_isActive)
-        {
+        
             if (collision.gameObject.layer == 8)
             {
 
@@ -119,7 +119,7 @@ public class ExitLevel : ActivableObjects
                     players.Remove(player);
                 }
             }
-        }
+        
         
     }
 }
