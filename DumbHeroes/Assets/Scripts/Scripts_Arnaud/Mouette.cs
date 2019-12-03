@@ -59,6 +59,7 @@ public class Mouette : MonoBehaviour
     {
         flag = true;
         yield return new WaitForSeconds(v_TimeBeforeObjectSpawn);
+        LaunchObject();
         
     }
 
