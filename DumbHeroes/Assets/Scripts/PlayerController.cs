@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float V_armSpeed = 0;
     [SerializeField]
-    Transform O_Lhand, O_Rhand, armTarget;
+    Transform O_Lhand, O_Rhand, AimArrow;
     [SerializeField]
     SortingGroup[] O_Rarm, O_Larm;
     bool grounded = false;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     bool charging;
     float charge;
-    bool regrab;
+    bool regrab = true;
     float recRotation;
     float grabpointDist;
     //Vector2 recDirection;
@@ -122,15 +122,21 @@ public class PlayerController : MonoBehaviour
 
     void flip()
     {
-        if (transform.localScale.x == 1 && O_armMidpoint.transform.position.x < transform.position.x)
+        if (O_armMidpoint.transform.position.x < transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            armTarget.localScale = new Vector3(-1, 1, 1);
+            //if (!CarriedObject)
+            //{
+            //    O_armMidpoint.transform.localScale = new Vector3(-1, 1, 1);
+            //}
         }
-        else if (transform.localScale.x == -1 && O_armMidpoint.transform.position.x > transform.position.x)
+        else if (O_armMidpoint.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            armTarget.localScale = new Vector3(1, 1, 1);
+            //if (!CarriedObject)
+            //{
+            //    O_armMidpoint.transform.localScale = new Vector3(1, 1, 1);
+            //}
         }
     }
 
@@ -141,12 +147,15 @@ public class PlayerController : MonoBehaviour
             LastAim = direction;
         }
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
-
         Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if (CarriedObject != null && getHeldWeight() == Objectweight.Light)
         {
-            O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            O_armMidpoint.transform.rotation = Quaternion.identity;
         }
 
         //recDirection = /*(O_armMidpoint.transform.position - transform.position).normalized;*/ direction;
@@ -180,7 +189,7 @@ public class PlayerController : MonoBehaviour
                 Collider2D closest = null;
                 foreach (Collider2D hit in hits)
                 {
-                    if ((hit.tag == "GrabAble" || hit.tag == "Player") && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
+                    if ((hit.tag == "GrabAble" || hit.tag == "CarryAble" || hit.tag == "Player") && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
                     {
                         closest = hit;
                     }
@@ -189,13 +198,16 @@ public class PlayerController : MonoBehaviour
                 {
                     anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
-                    O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     grabbedRecLayer = CarriedObject.gameObject.layer;
                     CarriedObject.gameObject.layer = 9;
-                    CarriedObject.transform.parent = O_armMidpoint.transform;
-                    if(getHeldWeight() == Objectweight.Light)
+                    if(closest.tag == "CarryAble")
                     {
                         O_armMidpoint.connectedAnchor = Vector2.zero;
+                        CarriedObject.transform.parent = O_armMidpoint.transform;
+                    }
+                    else
+                    {
+                        O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
                     }
                     O_armMidpoint.enabled = true;
                 }
@@ -211,8 +223,13 @@ public class PlayerController : MonoBehaviour
                 charge += Time.deltaTime;
                 float cprc = charge / throwTimeMax;
                 V_player.SetVibration(0, vibrateCurve.Evaluate(cprc));
+                float arrowScale = Mathf.Lerp(0, 1f, cprc);
+                AimArrow.transform.localScale = new Vector3(arrowScale,arrowScale,1);
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
                 O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1f, cprc);
+
+                O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
+                AimArrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(LastAim.y, LastAim.x));
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + LastAim * 2), Color.red);
             }
         }
@@ -228,7 +245,7 @@ public class PlayerController : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        CarriedObject.AddForce(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,ForceMode2D.Impulse);
+        CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,CarriedObject.position+O_armMidpoint.connectedAnchor ,ForceMode2D.Impulse);
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;
@@ -237,9 +254,13 @@ public class PlayerController : MonoBehaviour
 
     public void DropObject()
     {
+        AimArrow.transform.localScale = Vector3.zero;
         anims.SetBool("grab", false);
         CarriedObject.gameObject.layer = grabbedRecLayer;
-        CarriedObject.transform.parent = null;
+        if (CarriedObject.tag == "CarryAble")
+        {
+            CarriedObject.transform.parent = null;
+        }
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
