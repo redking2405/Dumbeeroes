@@ -333,4 +333,12 @@ public class PlayerController : MonoBehaviour
     {
         OutlineCheck();
     }
+
+    public void Respawn()
+    {
+        //Rajouter Anim éventuelle
+        gameObject.GetComponentInParent<Transform>().position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, gameObject.GetComponentInParent<Transform>().position.z);
+
+        
+    }
 }
