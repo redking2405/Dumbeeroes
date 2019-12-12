@@ -8,6 +8,7 @@ public class BoatBehaviour : MonoBehaviour
     public float dampProgress = 1f;
     public float coefRowing = 1f;
     public float sinkingCoef = 1f;
+    
 
     Vector2 startingPos;
 
@@ -59,6 +60,8 @@ public class BoatBehaviour : MonoBehaviour
             boatProgress = 100f;
         }
     }
+
+    
 
     void ManageSinking()
     {

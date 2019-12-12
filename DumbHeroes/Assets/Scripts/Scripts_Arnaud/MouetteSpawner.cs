@@ -13,16 +13,59 @@ public class MouetteSpawner : MonoBehaviour
     [SerializeField] float v_TimeBeforeActivateMax;
     int v_NumberOfMouetteToSpawn;
     [SerializeField]int v_NumberOfMouetteToSpawnMax;
+    [SerializeField] BoatBehaviour v_Progres;
+    [SerializeField]float v_TimeBeforeMouetteSpawnMax0;
+    [SerializeField]float v_TimeBeforeMouetteSpawnMax25;
+    [SerializeField]float v_TimeBeforeMouetteSpawnMax50;
+    [SerializeField]float v_TimeBeforeMouetteSpawnMax75;
+    float v_TimeBeforeMouetteSpawn;
+    bool flag;
     // Start is called before the first frame update
     void Start()
     {
-        //SpawnMouette();
+        v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Test Debug
+        if (!flag)
+        {
+            v_TimeBeforeMouetteSpawn -= Time.deltaTime;
+
+            if (v_TimeBeforeMouetteSpawn <= 0)
+            {
+                flag = true;
+                if(v_Progres.boatProgress>25f && v_Progres.boatProgress <= 50f)
+                {
+                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax25;
+                }
+
+                else if(v_Progres.boatProgress>50f && v_Progres.boatProgress <= 75f)
+                {
+                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax50;
+                }
+
+                else if (v_Progres.boatProgress > 75f)
+                {
+                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax75;
+                }
+
+                else
+                {
+                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax0;
+                }
+                
+            }
+
+
+        }
+
+        if (flag)
+        {
+            SpawnMouette();
+            flag = false;
+        }
 
         
     }

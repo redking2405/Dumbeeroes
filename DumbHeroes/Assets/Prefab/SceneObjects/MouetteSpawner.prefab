@@ -49,3 +49,8 @@ MonoBehaviour:
   v_TimeBeforeObjectSpawnMax: 2
   v_TimeBeforeActivateMax: 1
   v_NumberOfMouetteToSpawnMax: 5
+  v_Progres: {fileID: 0}
+  v_TimeBeforeMouetteSpawnMax0: 7
+  v_TimeBeforeMouetteSpawnMax25: 5
+  v_TimeBeforeMouetteSpawnMax50: 3
+  v_TimeBeforeMouetteSpawnMax75: 2

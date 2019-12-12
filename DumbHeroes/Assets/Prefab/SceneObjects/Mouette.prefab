@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4838501582021226839}
   - component: {fileID: -5071006363023309133}
   - component: {fileID: -885596749836384716}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mouette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
