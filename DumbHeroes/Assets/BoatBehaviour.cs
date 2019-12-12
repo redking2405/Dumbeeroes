@@ -12,6 +12,7 @@ public class BoatBehaviour : MonoBehaviour
     Vector2 startingPos;
 
     public int burdenItem = 0;
+    [SerializeField]
     float progressValue = 0f;
 
 
@@ -63,7 +64,7 @@ public class BoatBehaviour : MonoBehaviour
     {
         float sinkingY = Mathf.Lerp(this.transform.position.y, startingPos.y - sinkingCoef * burdenItem, dampProgress * Time.deltaTime);
 
-        Debug.Log(startingPos.y - sinkingCoef * burdenItem);
+        //Debug.Log(startingPos.y - sinkingCoef * burdenItem);
         this.transform.position = new Vector2(this.transform.position.x, sinkingY);
     }
 }

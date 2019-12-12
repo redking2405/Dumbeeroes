@@ -166,7 +166,6 @@ public class PlayerController : MonoBehaviour
         {
             if (CarriedObject != null)
             {
-                Debug.Log("drop");
                 regrab = false;
                 if (charging)
                 {

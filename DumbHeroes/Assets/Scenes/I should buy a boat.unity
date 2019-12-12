@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3741436044038041859, guid: 3aa3c29eb1a08354f963d76642d91b3d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
 --- !u!1 &134711162
@@ -780,7 +785,7 @@ GameObject:
   - component: {fileID: 885007337}
   - component: {fileID: 885007336}
   - component: {fileID: 885007338}
-  - component: {fileID: 885007339}
+  - component: {fileID: 885007340}
   m_Layer: 9
   m_Name: Row
   m_TagString: GrabAble
@@ -796,7 +801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885007334}
   m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -7, y: 2.5, z: 0}
+  m_LocalPosition: {x: -6, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 831212120}
@@ -819,15 +824,15 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.2702703, y: 0.8333333}
+  m_ConnectedAnchor: {x: -0.23166023, y: 0.8333333}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -20
-    m_UpperAngle: -160
+    m_LowerAngle: -40
+    m_UpperAngle: -140
 --- !u!50 &885007337
 Rigidbody2D:
   serializedVersion: 4
@@ -842,8 +847,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 5
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 10
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -875,26 +880,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.06, y: 0.46}
   m_EdgeRadius: 0
---- !u!231 &885007339
-SpringJoint2D:
+--- !u!114 &885007340
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885007334}
-  m_Enabled: 0
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 5.87, y: 0}
-  m_ConnectedAnchor: {x: 0.27222562, y: -8.385687}
-  m_AutoConfigureDistance: 0
-  m_Distance: 5.102585
-  m_DampingRatio: 0
-  m_Frequency: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18662c18d476359409ca0cdedd582a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boat: {fileID: 1902460185}
 --- !u!1 &912226823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902460184}
+  - component: {fileID: 1902460185}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -1170,6 +1169,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902460185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902460183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab6808a05a68684a9903f9d81f929f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatProgress: 0
+  dampProgress: 1
+  coefRowing: 1
+  sinkingCoef: 1
+  burdenItem: 0
+  progressValue: 0
 --- !u!1 &2097225785
 GameObject:
   m_ObjectHideFlags: 0
