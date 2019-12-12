@@ -39,7 +39,7 @@ public class LoadingCanon : MonoBehaviour
     
     IEnumerator LoadCanon(GameObject target)
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.1f);
         v_MyCanon.v_Loaded = true;
         target.transform.position = v_MyCanon.v_Position.position;
         v_MyCanon.v_ToLaunch = target;
