@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
             jumpChrono = 0;
+            SFXManager.Instance.Character1[3].Play();
         }
         if (V_player.GetButton("Jump") && jump)
         {
@@ -118,6 +119,7 @@ public class PlayerController : MonoBehaviour
             jump = false;
         }
         anims.SetBool("jump", jump);
+        
     }
 
     void flip()

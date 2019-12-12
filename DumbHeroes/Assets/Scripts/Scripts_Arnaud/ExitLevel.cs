@@ -37,6 +37,7 @@ public class ExitLevel : ActivableObjects
         if (v_isActive)
         {
             sRenderer.sprite = v_OpenSprite;
+            SFXManager.Instance.TutorialLevel[3].Play();
             if (players.Count >= totalPlayers && !trigger)
             {
                 FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, v_NextLevelName));

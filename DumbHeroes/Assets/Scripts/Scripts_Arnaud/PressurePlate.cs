@@ -59,6 +59,7 @@ public class PressurePlate : Interrupteur
         {
             
             v_WeightOnPlate += collision.attachedRigidbody.mass;
+            SFXManager.Instance.TutorialLevel[6].Play();
         }
     }
 

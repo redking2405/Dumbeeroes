@@ -46,6 +46,7 @@ public class Interrupteur : MonoBehaviour
             {
                 v_IsActivated = true;
                 v_IsTriggered = true;
+                SFXManager.Instance.TutorialLevel[5].Play();
                 renderer.sprite = v_SpritePressed;
                 ActivateObjects();
             }
