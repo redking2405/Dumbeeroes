@@ -55,7 +55,7 @@ public class PressurePlate : Interrupteur
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag=="CarrryAble"))
+        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag=="CarryAble"))
         {
             
             v_WeightOnPlate += collision.attachedRigidbody.mass;
@@ -65,7 +65,7 @@ public class PressurePlate : Interrupteur
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "CarrryAble"))
+        if((collision.gameObject.tag == "GrabAble" || collision.gameObject.tag == "CarryAble"))
         {
            
             v_WeightOnPlate -= collision.attachedRigidbody.mass;
