@@ -10,11 +10,11 @@ public class Canon : ActivableObjects
     [SerializeField]protected float v_TimerMax;
     protected float v_Timer;
     public GameObject v_ToLaunch;
-    [SerializeField]protected GameObject v_PrefabCanonBall;
+    //[SerializeField]protected GameObject v_PrefabCanonBall;
     protected bool v_Launched;
     public bool v_Ready;
     public bool v_Loaded;
-    protected bool canShoot;
+    public bool canShoot;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -74,21 +74,7 @@ public class Canon : ActivableObjects
             }
         }
 
-        else
-        {
-            GameObject canonBall = Instantiate(v_PrefabCanonBall, v_Position.position, Quaternion.identity);
-            Rigidbody2D rbd = canonBall.GetComponent<Rigidbody2D>();
-            if (rbd)
-            {
-                //v_Angle = Mathf.Deg2Rad * v_Angle;
-                var direction = Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right;
-                direction = direction.normalized;
-                rbd.AddForce(direction * v_Force, ForceMode2D.Impulse);
-
-            }
-
-            
-        }
+        
 
         v_Launched = true;
         v_Ready = false;
