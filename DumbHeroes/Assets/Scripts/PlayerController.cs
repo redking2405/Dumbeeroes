@@ -127,18 +127,18 @@ public class PlayerController : MonoBehaviour
         if (O_armMidpoint.transform.position.x < transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            //if (!CarriedObject)
-            //{
-            //    O_armMidpoint.transform.localScale = new Vector3(-1, 1, 1);
-            //}
+            if (!CarriedObject)
+            {
+                O_armMidpoint.transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+            }
         }
         else if (O_armMidpoint.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            //if (!CarriedObject)
-            //{
-            //    O_armMidpoint.transform.localScale = new Vector3(1, 1, 1);
-            //}
+            if (!CarriedObject)
+            {
+                O_armMidpoint.transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 
@@ -151,9 +151,9 @@ public class PlayerController : MonoBehaviour
         O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
         Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (CarriedObject != null && getHeldWeight() == Objectweight.Light)
+        if (CarriedObject != null && CarriedObject.tag == "CarryAble")
         {
-            //O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
         {
