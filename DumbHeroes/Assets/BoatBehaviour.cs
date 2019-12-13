@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoatBehaviour : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class BoatBehaviour : MonoBehaviour
     public float dampProgress = 1f;
     public float coefRowing = 1f;
     public float sinkingCoef = 1f;
-    
+    public Slider progressBar;
 
     Vector2 startingPos;
 
@@ -59,6 +60,7 @@ public class BoatBehaviour : MonoBehaviour
         {
             boatProgress = 100f;
         }
+        progressBar.value = boatProgress / 100;
     }
 
     
