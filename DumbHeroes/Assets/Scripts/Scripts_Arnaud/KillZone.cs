@@ -10,5 +10,10 @@ public class KillZone : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().Respawn();
         }
+
+        if (collision.gameObject.layer == 12)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
