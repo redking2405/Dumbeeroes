@@ -12,6 +12,7 @@ public class Mouette : MonoBehaviour
     bool objectLaunched;
     bool flag;
     Rigidbody2D rbd;
+    CacaMouette obj;
 
     private void Awake()
     {
@@ -65,14 +66,18 @@ public class Mouette : MonoBehaviour
 
     void LaunchObject()
     {
-        Instantiate(v_PrefabObjectSpawn, transform.position, Quaternion.identity);
+        GameObject temp=Instantiate(v_PrefabObjectSpawn, transform.position, Quaternion.identity);
+        obj = temp.GetComponent<CacaMouette>();
         objectLaunched = true;
     }
 
     void Death()
     {
         //Play animation éventuelle puis destroy
-        Destroy(gameObject);
+        isActive = false;
+        rbd.gravityScale = 1;
+
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -86,5 +91,13 @@ public class Mouette : MonoBehaviour
         }
        
         
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 12)
+        {
+            obj.SwitchLayer();
+        }
     }
 }
