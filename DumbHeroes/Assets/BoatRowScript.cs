@@ -7,12 +7,19 @@ public class BoatRowScript : MonoBehaviour
     float lastangle;
     [SerializeField]
     BoatBehaviour boat;
+    [SerializeField]
+    ParticleSystem rowparticle;
 
     private void FixedUpdate()
     {
-        if(transform.localEulerAngles.z > lastangle)
+        if(transform.localEulerAngles.z < lastangle)
         {
-            boat.RowTheBoat((transform.localEulerAngles.z - lastangle)/100);
+            float magnitude = lastangle - transform.localEulerAngles.z;
+            boat.RowTheBoat((magnitude) /100);
+            if (magnitude > 1)
+            {
+                rowparticle.Play();
+            }
         }
         lastangle = transform.localEulerAngles.z;
     }
