@@ -912,6 +912,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1470974313438800451, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470974313796707236, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470974314427871748, guid: 87aff4a7121bce94fa71b9ba2b92676c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5043121719387606955, guid: 87aff4a7121bce94fa71b9ba2b92676c,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -931,21 +946,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.92502487
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470974313438800451, guid: 87aff4a7121bce94fa71b9ba2b92676c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470974313796707236, guid: 87aff4a7121bce94fa71b9ba2b92676c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470974314427871748, guid: 87aff4a7121bce94fa71b9ba2b92676c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5043121719387606950, guid: 87aff4a7121bce94fa71b9ba2b92676c,
         type: 3}
@@ -1840,7 +1840,9 @@ MonoBehaviour:
   v_SpritePressed: {fileID: 21300000, guid: c0c2cfc86a6e7a846ab953ca1d4c6787, type: 3}
   v_ObjectToActivate:
   - {fileID: 390924999}
+  v_IsTriggered: 0
   v_WeightNeeded: 1
+  v_WeightOnPlate: 0
 --- !u!212 &1259133533
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3279,7 +3281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1954431360
 Transform:
   m_ObjectHideFlags: 0

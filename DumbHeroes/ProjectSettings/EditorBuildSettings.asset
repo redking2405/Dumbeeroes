@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelDesign/TUTORIELS/5_TUTO_2 2B_Hold.unity
     guid: 3461ec4a27cbc3b4a9d254246bb19ef5
   - enabled: 0
-    path: Assets/Scenes/LevelDesign/Throw Crates.unity
+    path: Assets/Scenes/LevelDesign/DEFAULT SCENE.unity
     guid: 9d1074cce651bcc4ab14275bb1b35d52
   - enabled: 1
     path: Assets/Scenes/I should buy a boat.unity

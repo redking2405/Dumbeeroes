@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 3625201182436128525}
   - component: {fileID: 3625201182436128524}
   - component: {fileID: 3625201182436128499}
-  - component: {fileID: 3255669141315292109}
   - component: {fileID: 734389264757646447}
   m_Layer: 12
-  m_Name: Ball
+  m_Name: CannonBullets
   m_TagString: CarryAble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b1af90ce03a007349aa9428d646a0939, type: 3}
-  m_Color: {r: 0.4227483, g: 0.9433962, b: 0.75147104, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 55395ad1816d94641a7482fe0fbf71ab, type: 3}
+  m_Color: {r: 0.41647387, g: 0.46226418, b: 0.44539407, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,41 +94,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 20
   m_LinearDrag: 0.4
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 6200000, guid: e7aceca636bac30468e9365b08ae18d1, type: 2}
+  m_Material: {fileID: 6200000, guid: ede479278f2b72a4e8cd0b4d88e76ec6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3255669141315292109
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3625201182436128497}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 788b4dd6039c7ae4899e87e5a76563c9, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.62, y: 2.83}
-  m_EdgeRadius: 0
 --- !u!58 &734389264757646447
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +112,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3625201182436128497}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: e7aceca636bac30468e9365b08ae18d1, type: 2}
+  m_Material: {fileID: 6200000, guid: ede479278f2b72a4e8cd0b4d88e76ec6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
