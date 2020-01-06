@@ -21,7 +21,6 @@ MonoBehaviour:
   v_Ready: 0
   v_Loaded: 0
   canShoot: 0
-  Fleche: {fileID: 0}
   v_AngleMax: 90
   v_AngleMin: 30
   v_TimerRotateMax: 3
@@ -92,7 +91,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4514353848740393015, guid: 510d1b0e297cbad418196e133cfb57fd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 510d1b0e297cbad418196e133cfb57fd, type: 3}
 --- !u!1 &9317537254659176 stripped
 GameObject:

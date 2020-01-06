@@ -16,7 +16,7 @@ public class LoadingCanon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "CarryAble")
+        if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag=="Player")
         {
 
             if (!v_MyCanon.v_Loaded && !v_MyCanon.v_Ready)
