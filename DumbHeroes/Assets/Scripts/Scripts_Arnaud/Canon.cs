@@ -26,7 +26,10 @@ public class Canon : ActivableObjects
     // Update is called once per frame
     protected virtual void Update()
     {
-
+        if (v_ToLaunch != null)
+        {
+            v_ToLaunch.transform.position = v_Position.position;
+        }
         
 
         if (canShoot)
@@ -45,6 +48,7 @@ public class Canon : ActivableObjects
 
             if (v_Ready && !v_Launched)
             {
+
                 Shoot();
             }
         }
