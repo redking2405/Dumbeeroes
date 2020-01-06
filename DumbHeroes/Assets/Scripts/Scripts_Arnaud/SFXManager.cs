@@ -6,7 +6,7 @@ public class SFXManager : MonoBehaviour
 {
 
     public static SFXManager Instance;
-
+    public AudioSource MenuSound;
     public List<AudioSource> Character1;
     public List<AudioSource> Character2;
     public List<AudioSource> Character3;

@@ -8,11 +8,13 @@ public class KillZone : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
+
             collision.gameObject.GetComponent<PlayerController>().Respawn();
         }
 
-        if (collision.gameObject.layer == 12)
+        if (collision.gameObject.layer == 12 && collision.gameObject.tag == "CarryAble")
         {
+            SFXManager.Instance.BoatLevel[4].Play();
             Destroy(collision.gameObject);
         }
     }
