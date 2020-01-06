@@ -26,14 +26,14 @@ public class Canon : ActivableObjects
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (v_ToLaunch != null)
-        {
-            v_ToLaunch.transform.position = v_Position.position;
-        }
-        
+       
 
         if (canShoot)
         {
+            if (v_ToLaunch != null)
+            {
+                v_ToLaunch.transform.position = v_Position.position;
+            }
 
             if (!v_Ready)
             {
