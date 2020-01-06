@@ -6145,7 +6145,7 @@ MonoBehaviour:
   O_Larm: []
   ground:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 5121
   throwCurve:
     serializedVersion: 2
     m_Curve:
