@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Canon : ActivableObjects
 {
+    public GameObject Fleche;
     public float v_Angle;
     public float v_Force;
     [SerializeField]public Transform v_Position;
@@ -19,13 +20,18 @@ public class Canon : ActivableObjects
     protected virtual void Start()
     {
         v_Timer = v_TimerMax;
+        Fleche.transform.eulerAngles = new Vector3(0, 0, v_Angle);
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+
+        
+
         if (canShoot)
         {
+
             if (!v_Ready)
             {
                 v_Timer -= Time.deltaTime;

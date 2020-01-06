@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CanonPeriodic : Canon
 {
+    
     [SerializeField] float v_AngleMax;
     [SerializeField] float v_AngleMin;
     bool v_WideOpen;
@@ -21,12 +22,14 @@ public class CanonPeriodic : Canon
     protected override void Update()
     {
         Debug.DrawRay(transform.position, Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right, Color.red);
+        Fleche.transform.eulerAngles = new Vector3(0, 0, v_Angle);
         if (!v_WideOpen)
         {
             v_TimerRotate -= Time.deltaTime;
             float ratio = v_TimerRotate / 3f;
             ratio = 1f - ratio;
             v_Angle = Mathf.Lerp(v_Angle, v_AngleMax, ratio);
+            
             if (v_Angle == v_AngleMax)
             {
                 v_WideOpen = true;
@@ -41,6 +44,7 @@ public class CanonPeriodic : Canon
             float ratio = v_TimerRotate / 3f;
             ratio = 1f - ratio;
             v_Angle = Mathf.Lerp(v_Angle, v_AngleMin, ratio);
+            
             if (v_Angle == v_AngleMin)
             {
                 v_WideOpen = false;
