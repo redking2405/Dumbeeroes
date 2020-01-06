@@ -11,20 +11,11 @@ public class MouetteSpawner : MonoBehaviour
     float v_TimeBeforeObjectSpawn;
     float v_TimeBeforeActivate;
     [SerializeField] float v_TimeBeforeActivateMax;
-    int v_NumberOfMouetteToSpawn;
-    [SerializeField]int v_NumberOfMouetteToSpawnMax;
-    [SerializeField] BoatBehaviour v_Progres;
-    [SerializeField]float v_TimeBeforeMouetteSpawnMax0;
-    [SerializeField]float v_TimeBeforeMouetteSpawnMax25;
-    [SerializeField]float v_TimeBeforeMouetteSpawnMax50;
-    [SerializeField]float v_TimeBeforeMouetteSpawnMax75;
+    public AnimationCurve SpawnCurve;
+    public BoatBehaviour boat;
     float v_TimeBeforeMouetteSpawn;
     bool flag;
     // Start is called before the first frame update
-    void Start()
-    {
-        v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax0;
-    }
 
     // Update is called once per frame
     void Update()
@@ -36,29 +27,9 @@ public class MouetteSpawner : MonoBehaviour
             if (v_TimeBeforeMouetteSpawn <= 0)
             {
                 flag = true;
-                if(v_Progres.boatProgress>25f && v_Progres.boatProgress <= 50f)
-                {
-                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax25;
-                }
-
-                else if(v_Progres.boatProgress>50f && v_Progres.boatProgress <= 75f)
-                {
-                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax50;
-                }
-
-                else if (v_Progres.boatProgress > 75f)
-                {
-                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax75;
-                }
-
-                else
-                {
-                    v_TimeBeforeMouetteSpawn = v_TimeBeforeMouetteSpawnMax0;
-                }
-                
+                v_TimeBeforeMouetteSpawn = SpawnCurve.Evaluate(boat.boatProgress / boat.boatDistance);
+                Debug.Log(v_TimeBeforeMouetteSpawn);
             }
-
-
         }
 
         if (flag)
@@ -72,15 +43,10 @@ public class MouetteSpawner : MonoBehaviour
 
     public void SpawnMouette()
     {
-        v_NumberOfMouetteToSpawn = Mathf.RoundToInt(Random.Range(0, v_NumberOfMouetteToSpawnMax));
-
-        for(int i=0; i<v_NumberOfMouetteToSpawn; i++)
-        {
-            v_Speed = Mathf.RoundToInt(Random.Range(0, v_SpeedMax));
-            v_TimeBeforeActivate = Mathf.RoundToInt(Random.Range(0, v_TimeBeforeActivateMax));
-            v_TimeBeforeObjectSpawn = Mathf.RoundToInt(Random.Range(0, v_TimeBeforeObjectSpawnMax));
+            v_Speed = Mathf.RoundToInt(Random.Range(10, v_SpeedMax));
+            v_TimeBeforeActivate = Mathf.RoundToInt(Random.Range(1, v_TimeBeforeActivateMax));
+            v_TimeBeforeObjectSpawn = Mathf.RoundToInt(Random.Range(1, v_TimeBeforeObjectSpawnMax));
             GameObject mouette=Instantiate(v_MouettePrefab, transform.position, Quaternion.identity);
             mouette.GetComponent<Mouette>().Initialise(v_Speed, v_TimeBeforeActivate, v_TimeBeforeObjectSpawn);
-        }
     }
 }
