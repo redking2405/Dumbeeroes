@@ -89,4 +89,13 @@ public class BoatBehaviour : MonoBehaviour
         //Debug.Log(startingPos.y - sinkingCoef * burdenItem);
         //this.transform.position = new Vector2(this.transform.position.x, sinkingY);
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "CarryAble")
+        {
+            SFXManager.Instance.BoatLevel[4].Play();
+        }
+    }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f26dc26f8b74ee4ea5ee1db071ae1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Fleche: {fileID: 6497240194470173574}
   v_Angle: 0
   v_Force: 500
   v_Position: {fileID: 9317538335355344}
@@ -20,6 +21,7 @@ MonoBehaviour:
   v_Ready: 0
   v_Loaded: 0
   canShoot: 0
+  Fleche: {fileID: 0}
   v_AngleMax: 90
   v_AngleMin: 30
   v_TimerRotateMax: 3
@@ -90,8 +92,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4514353848740393015, guid: 510d1b0e297cbad418196e133cfb57fd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510d1b0e297cbad418196e133cfb57fd, type: 3}
 --- !u!1 &9317537254659176 stripped
 GameObject:
@@ -102,6 +103,12 @@ GameObject:
 --- !u!4 &9317538335355344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4514353847656813952, guid: 510d1b0e297cbad418196e133cfb57fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4505621253354710096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6497240194470173574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7254730689778597846, guid: 510d1b0e297cbad418196e133cfb57fd,
     type: 3}
   m_PrefabInstance: {fileID: 4505621253354710096}
   m_PrefabAsset: {fileID: 0}
