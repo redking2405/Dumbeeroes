@@ -50,4 +50,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/I should buy a boat.unity
     guid: b72262cba0a495943a0d63d977b4f0c7
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/1_Cannon intro.unity
+    guid: 14ec9e1cbcbd6f64e90321f4e7945f0b
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/2_Cannon Player throw.unity
+    guid: 34e581b46adb8a74bb0047019e37ddac
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/3_Cannon hill.unity
+    guid: 8ee6bef24fcdcf9499e4879628932851
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/4_Cannon.unity
+    guid: df4346966cea3714aa17f75f3ffa5f6f
   m_configObjects: {}
