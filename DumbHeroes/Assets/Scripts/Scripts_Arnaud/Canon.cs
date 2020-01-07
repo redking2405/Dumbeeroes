@@ -72,6 +72,7 @@ public class Canon : ActivableObjects
         v_Timer = v_TimerMax;
         if (v_Loaded)
         {
+            v_ToLaunch.transform.eulerAngles = Vector3.zero;
             Rigidbody2D rbd = v_ToLaunch.GetComponent<Rigidbody2D>();
             if (rbd)
             {
