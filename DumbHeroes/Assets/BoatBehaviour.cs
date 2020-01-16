@@ -95,7 +95,7 @@ public class BoatBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "CarryAble")
         {
-            SFXManager.Instance.BoatLevel[4].Play();
+            //SFXManager.Instance.BoatLevel[4].Play();
         }
     }
 }

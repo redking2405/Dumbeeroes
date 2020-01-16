@@ -65,6 +65,7 @@ public class Interrupteur : MonoBehaviour
 
     public void ActivateObjects()
     {
+        SFXManager.Instance.GeneralSound[0].Play();
         for (int i = 0; i < v_ObjectToActivate.Length; i++)
         {
             v_ObjectToActivate[i].Activate();

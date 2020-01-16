@@ -13,7 +13,7 @@ public class SFXManager : MonoBehaviour
     public List<AudioSource> Character4;
 
     public List<AudioSource> TutorialLevel;
-    public List<AudioSource> BoatLevel;
+    public List<AudioSource> GeneralSound;
 
 
     private void Awake()

@@ -14,7 +14,7 @@ public class KillZone : MonoBehaviour
 
         if (collision.gameObject.layer == 12 && collision.gameObject.tag == "CarryAble")
         {
-            SFXManager.Instance.BoatLevel[5].Play();
+            //SFXManager.Instance.BoatLevel[5].Play();
             Destroy(collision.gameObject);
         }
     }
