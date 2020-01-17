@@ -19,6 +19,12 @@ public class LoadingCanon : MonoBehaviour
         if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag=="Player")
         {
 
+
+            if (collision.gameObject.GetComponentInParent<PlayerController>())
+            {
+                collision.gameObject.GetComponentInParent<PlayerController>().DropObject();
+            }
+
             if (!v_MyCanon.v_Loaded && !v_MyCanon.v_Ready)
             {
                 StartCoroutine(LoadCanon(collision.gameObject));
