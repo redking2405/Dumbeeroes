@@ -6484,7 +6484,7 @@ PrefabInstance:
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
       propertyPath: SpawnCurve.m_Curve.Array.data[1].value
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
@@ -6529,12 +6529,12 @@ PrefabInstance:
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
       propertyPath: SpawnCurve.m_Curve.Array.data[0].inSlope
-      value: -5.3333335
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
       propertyPath: SpawnCurve.m_Curve.Array.data[0].outSlope
-      value: -5.3333335
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
@@ -6554,12 +6554,12 @@ PrefabInstance:
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
       propertyPath: SpawnCurve.m_Curve.Array.data[2].inSlope
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}
       propertyPath: SpawnCurve.m_Curve.Array.data[2].outSlope
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2328390064657537815, guid: 9318205aaf4257b4d8187d10543009de,
         type: 3}

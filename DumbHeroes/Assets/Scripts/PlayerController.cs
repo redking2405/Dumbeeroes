@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float throwTimeMax;
 
+    public bool CarriedbyPlayer;
     bool charging;
     float charge;
     bool regrab = true;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed)
+        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && ! CarriedbyPlayer)
         {
         rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0));
         //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
@@ -190,7 +191,7 @@ public class PlayerController : MonoBehaviour
                 Collider2D closest = null;
                 foreach (Collider2D hit in hits)
                 {
-                    if ((hit.tag == "GrabAble" || hit.tag == "CarryAble" || hit.tag == "Player") && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
+                    if ((hit.tag == "GrabAble" || hit.tag == "CarryAble" || (hit.tag == "Player" && !CarriedbyPlayer)) && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
                     {
                         closest = hit;
                     }
@@ -209,6 +210,11 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
+                        if(closest.tag == "Player")
+                        {
+                            closest.attachedRigidbody.mass = 10f;
+                            closest.GetComponent<PlayerController>().CarriedbyPlayer = true;
+                        }
                     }
                     O_armMidpoint.enabled = true;
                 }
@@ -261,6 +267,10 @@ public class PlayerController : MonoBehaviour
         if (CarriedObject.tag == "CarryAble")
         {
             CarriedObject.transform.parent = null;
+        }
+        if (CarriedObject.tag == "Player")
+        {
+            CarriedObject.mass = 100f;
         }
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;

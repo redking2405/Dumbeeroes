@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class BoatBehaviour : MonoBehaviour
 {
-    public float boatProgress = 0f;
+    public float boatProgress;
     public float boatDistance;
-    public float coefRowing = 1f;
-    public float sinkingCoef = 1f;
-    public float Slowfactor = 0.1f;
+    public float coefRowing;
+    public float sinkingCoef;
+    public float Slowfactor;
     public Slider progressBar;
     public GameObject DockStart;
     public GameObject DockFinish;

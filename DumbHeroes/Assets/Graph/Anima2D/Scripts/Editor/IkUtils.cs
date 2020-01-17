@@ -44,7 +44,6 @@ namespace Anima2D
 
 				Transform boneTransform = poseBoneProp.objectReferenceValue as Transform;
 				Bone2D bone = boneTransform.GetComponent<Bone2D>();
-
 				if(bone)
 				{
 					bone.attachedIK = null;
