@@ -177,6 +177,8 @@ public class PlayerController : MonoBehaviour
                     DropObject();
                 }
             }
+
+            StartCoroutine(ShakeController(1, 0.1f, 1, false));
         }
         if (V_player.GetButtonUp("Grab"))
         {

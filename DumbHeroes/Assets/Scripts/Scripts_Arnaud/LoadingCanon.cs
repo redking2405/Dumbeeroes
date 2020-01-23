@@ -20,7 +20,7 @@ public class LoadingCanon : MonoBehaviour
         {
 
 
-            if (collision.gameObject.GetComponentInParent<PlayerController>())
+            if (collision.gameObject.GetComponentInParent<PlayerController>() && collision.gameObject.GetComponentInParent<PlayerController>().CarriedObject)
             {
                 collision.gameObject.GetComponentInParent<PlayerController>().DropObject();
             }
