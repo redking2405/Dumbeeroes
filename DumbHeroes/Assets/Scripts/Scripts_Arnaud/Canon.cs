@@ -16,6 +16,7 @@ public class Canon : ActivableObjects
     public bool v_Ready;
     public bool v_Loaded;
     public bool canShoot;
+    float mass;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -69,16 +70,19 @@ public class Canon : ActivableObjects
     }
     public void Shoot()
     {
+        mass = GetComponentInChildren<LoadingCanon>().origMass;
         v_Timer = v_TimerMax;
         if (v_Loaded)
         {
             v_ToLaunch.transform.eulerAngles = Vector3.zero;
             Rigidbody2D rbd = v_ToLaunch.GetComponent<Rigidbody2D>();
+            
             if (rbd)
             {
                 var direction=Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right;
                 direction = direction.normalized;
                 rbd.AddForce(direction * v_Force, ForceMode2D.Impulse);
+                rbd.mass = mass;
                 v_ToLaunch = null;
                 v_Loaded = false;
 

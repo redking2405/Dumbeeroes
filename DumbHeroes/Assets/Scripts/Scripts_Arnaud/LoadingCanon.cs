@@ -6,7 +6,8 @@ public class LoadingCanon : MonoBehaviour
 {
     Canon v_MyCanon;
     GameObject v_Target;
-    
+    public Rigidbody2D reference;
+    [HideInInspector] public float origMass;
     // Start is called before the first frame update
 
     private void Awake()
@@ -18,7 +19,8 @@ public class LoadingCanon : MonoBehaviour
     {
         if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag=="Player")
         {
-
+            origMass = collision.gameObject.GetComponent<Rigidbody2D>().mass;
+            collision.gameObject.GetComponent<Rigidbody2D>().mass = reference.mass;
 
             if (collision.gameObject.GetComponentInParent<PlayerController>() && collision.gameObject.GetComponentInParent<PlayerController>().CarriedObject)
             {
