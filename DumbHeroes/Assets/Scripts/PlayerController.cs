@@ -86,12 +86,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && ! CarriedbyPlayer)
         {
-        rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0));
-        //Physics2DExtensions.AddForce(rb, new Vector2(10000 * V_player.GetAxis("MoveX"), 0), ForceMode.Force);
-        //Physics2DExtensions.AddForce(rb, 10000 * V_player.GetAxis("MoveX"),)
-        anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
-        //rb.velocity = new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"), rb.velocity.y);
-        //Physics2DExtensions.AddForce(rb, new Vector2(V_moveSpeed * V_player.GetAxis("MoveX"),0), ForceMode.VelocityChange);
+            //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0));
+            rb.velocity = new Vector2(V_player.GetAxis("MoveX") * 10,rb.velocity.y);
+            anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
         }
     }
 
@@ -101,7 +98,10 @@ public class PlayerController : MonoBehaviour
         {
             jump = true;
             jumpChrono = 0;
-            SFXManager.Instance.Character1[3].Play();
+            if (SFXManager.Instance)
+            {
+                SFXManager.Instance.Character1[3].Play();
+            }
         }
         if (V_player.GetButton("Jump") && jump)
         {
@@ -149,19 +149,21 @@ public class PlayerController : MonoBehaviour
         {
             LastAim = direction;
         }
-        O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
+        //O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
+        DistanceJoint2D anchor = O_armMidpoint.GetComponent<DistanceJoint2D>();
+        Vector2 targetArmPos = (Vector2)transform.position + anchor.connectedAnchor/2 + LastAim * (anchor.distance-0.1f);
+        O_armMidpoint.attachedRigidbody.MovePosition(Vector2.Lerp(O_armMidpoint.transform.position,targetArmPos,Time.deltaTime*V_armSpeed));
         Vector2 dir = O_armMidpoint.transform.position - O_armMidpoint.GetComponent<DistanceJoint2D>().connectedBody.transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if (CarriedObject != null && CarriedObject.tag == "CarryAble")
         {
+            O_armMidpoint.transform.GetChild(0).localScale = new Vector3(1, 1, 1);
             O_armMidpoint.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         else
         {
             O_armMidpoint.transform.rotation = Quaternion.identity;
         }
-
-        //recDirection = /*(O_armMidpoint.transform.position - transform.position).normalized;*/ direction;
 
         if (V_player.GetButtonDown("Grab"))
         {
@@ -237,7 +239,7 @@ public class PlayerController : MonoBehaviour
                 //V_player.SetVibration(1, vibrateCurve.Evaluate(cprc));
                 O_armMidpoint.GetComponent<DistanceJoint2D>().distance = Mathf.Lerp(grabpointDist, 1f, cprc);
 
-                O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
+               // O_armMidpoint.attachedRigidbody.velocity = LastAim * V_armSpeed;
                 AimArrow.transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(LastAim.y, LastAim.x));
                 Debug.DrawLine(O_armMidpoint.transform.position, ((Vector2)O_armMidpoint.transform.position + LastAim * 2), Color.red);
             }
@@ -277,22 +279,6 @@ public class PlayerController : MonoBehaviour
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
         O_armMidpoint.enabled = false;
-    }
-
-    Objectweight getHeldWeight()
-    {
-        float mass = CarriedObject.mass;
-        if(mass >= 100)
-        {
-            return Objectweight.Heavy;
-        }else if(mass >= 50)
-        {
-            return Objectweight.Medium;
-        }
-        else
-        {
-            return Objectweight.Light;
-        }
     }
 
     IEnumerator ShakeController(float power, float time, int motor, bool both)
