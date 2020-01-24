@@ -4531,7 +4531,7 @@ MonoBehaviour:
   v_SpriteUnpressed: {fileID: 21300000, guid: c997130edbeb92a469332fc3b78611f7, type: 3}
   v_SpritePressed: {fileID: 21300000, guid: 812414c2cb09f9b40888f4c568c533f6, type: 3}
   v_ObjectToActivate:
-  - {fileID: 0}
+  - {fileID: 1736627668}
   v_IsTriggered: 0
   v_WeightNeeded: 1
   v_WeightOnPlate: 0
@@ -6568,7 +6568,7 @@ MonoBehaviour:
   v_SpriteUnpressed: {fileID: 21300000, guid: ef91dd734e6228a498335f470b557f9a, type: 3}
   v_SpritePressed: {fileID: 21300000, guid: 46d26c8fed92ede46922f6a91aa73b1b, type: 3}
   v_ObjectToActivate:
-  - {fileID: 0}
+  - {fileID: 1618963830}
   v_IsTriggered: 0
 --- !u!50 &1849094348
 Rigidbody2D:
