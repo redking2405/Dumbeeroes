@@ -62,6 +62,14 @@ public class FadeInOut : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
         StartCoroutine(Fade(FadeDirection.Out));
     }
+
+    public IEnumerator FadeAndBougeCam(FadeDirection fadeDirection, Transform position)
+    {
+        yield return Fade(fadeDirection);
+        Camera.main.transform.position = position.position;
+        StartCoroutine(Fade(FadeDirection.Out));
+
+    }
     private void SetColorImage(ref float alpha, FadeDirection fadeDirection)
     {
         fadeOutUIImage.color = new Color(fadeOutUIImage.color.r, fadeOutUIImage.color.g, fadeOutUIImage.color.b, alpha);

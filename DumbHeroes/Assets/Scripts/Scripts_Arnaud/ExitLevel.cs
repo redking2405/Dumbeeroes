@@ -6,16 +6,17 @@ using Rewired;
 public class ExitLevel : ActivableObjects
 {
     [SerializeField] LayerMask mask;
-    List<PlayerController> players = new List<PlayerController>();
+    protected List<PlayerController> players = new List<PlayerController>();
+    protected List<Rigidbody2D> rbds = new List<Rigidbody2D>();
 
-    SpriteRenderer sRenderer;
+    protected SpriteRenderer sRenderer;
     public Sprite v_OpenSprite; // Uniquement tant qu'on a pas de niveaux venant après celui ci
-    Sprite v_origColor;
-    public string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
-    bool v_isActive = false;
-    [SerializeField] int totalPlayers;
-    bool trigger = false;
-    private void Awake()
+    protected Sprite v_origColor;
+    [SerializeField] private string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
+    protected bool v_isActive = false;
+    [SerializeField] protected int totalPlayers;
+    protected bool trigger = false;
+    protected void Awake()
     {
         
         sRenderer = GetComponent<SpriteRenderer>();
@@ -36,6 +37,7 @@ public class ExitLevel : ActivableObjects
 
         if (v_isActive)
         {
+
             sRenderer.sprite = v_OpenSprite;
             SFXManager.Instance.TutorialLevel[3].Play();
             if (players.Count >= totalPlayers && !trigger)
@@ -52,17 +54,18 @@ public class ExitLevel : ActivableObjects
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
        
             if (collision.gameObject.layer==8)
             {
                 PlayerController player = collision.GetComponent<PlayerController>();
-
+                Rigidbody2D rbd = collision.GetComponent<Rigidbody2D>();
 
                 if (!CheckIfAlreadyInList(player))
                 {
                     players.Add(player);
+                    rbds.Add(rbd);
                 }
 
             }
@@ -107,17 +110,19 @@ public class ExitLevel : ActivableObjects
         v_isActive = false;
         base.Deactivate();
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision)
     {
         
             if (collision.gameObject.layer == 8)
             {
 
                 PlayerController player = collision.GetComponent<PlayerController>();
+                Rigidbody2D rbd = collision.GetComponent<Rigidbody2D>();
 
-                if (CheckIfAlreadyInList(player))
+            if (CheckIfAlreadyInList(player))
                 {
                     players.Remove(player);
+                    rbds.Remove(rbd);
                 }
             }
         
