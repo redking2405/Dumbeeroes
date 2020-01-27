@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     float throwForce;
     [SerializeField]
     float throwTimeMax;
+    [SerializeField]
+    GameObject ThrowEffects;
 
     public bool CarriedbyPlayer;
     bool charging;
@@ -128,7 +130,7 @@ public class PlayerController : MonoBehaviour
         if (O_armMidpoint.transform.position.x < transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            if (!CarriedObject)
+            if (!CarriedObject || CarriedObject.tag != "CarryAble")
             {
                 O_armMidpoint.transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
             }
@@ -136,7 +138,7 @@ public class PlayerController : MonoBehaviour
         else if (O_armMidpoint.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            if (!CarriedObject)
+            if (!CarriedObject || CarriedObject.tag != "CarryAble")
             {
                 O_armMidpoint.transform.GetChild(0).localScale = new Vector3(1, 1, 1);
             }
@@ -256,7 +258,12 @@ public class PlayerController : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce,CarriedObject.position+O_armMidpoint.connectedAnchor ,ForceMode2D.Impulse);
+        if (CarriedObject.tag == "CarryAble" || grounded)
+        {
+            CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce, CarriedObject.position + O_armMidpoint.connectedAnchor, ForceMode2D.Impulse);
+            Instantiate(ThrowEffects, CarriedObject.transform);
+            CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
+        }
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
         charge = 0;

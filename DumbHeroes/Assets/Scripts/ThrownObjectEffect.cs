@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class ThrownObjectEffect : MonoBehaviour
 {
-    public ParticleSystem collparticles;
-    public TrailRenderer trail;
+    ParticleSystem collparticles;
+    TrailRenderer trail;
+    Rigidbody2D rb;
 
-    private void Awake()
+    private void Start()
     {
-        trail = gameObject.GetComponent<TrailRenderer>();
+        trail = GetComponentInChildren<TrailRenderer>();
+        collparticles = GetComponentInChildren<ParticleSystem>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("ponk");
         foreach(ContactPoint2D p in collision.contacts)
         {
             collparticles.transform.position = p.point;
             collparticles.transform.rotation = Quaternion.FromToRotation(collparticles.transform.up, p.normal) * collparticles.transform.rotation;
             collparticles.Play();
         }
-        //trail.emitting = false;
+    }
+
+    private void Update()
+    {
+        if(rb.velocity.magnitude < 1)
+        {
+            StartCoroutine(Delete());
+        }
     }
 
     IEnumerator Delete()
     {
+        trail.emitting = false;
+        collparticles.Stop();
         yield return new WaitForSeconds(2f);
+        Destroy(trail.gameObject);
         Destroy(this);
     }
 }
