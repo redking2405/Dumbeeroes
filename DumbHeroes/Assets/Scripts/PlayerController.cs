@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
     public bool CarriedbyPlayer;
     bool charging;
     float charge;
+    float originalMass;
     bool regrab = true;
     float recRotation;
     float grabpointDist;
-    //Vector2 recDirection;
-    Vector2 LastAim;
+    Vector2 LastAim = Vector2.right;
 
     int grabbedRecLayer;
 
@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && ! CarriedbyPlayer)
         {
-            //rb.AddForce(new Vector2(10000 * V_player.GetAxis("MoveX"), 0));
             rb.velocity = new Vector2(V_player.GetAxis("MoveX") * 10,rb.velocity.y);
             anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
         }
@@ -212,12 +211,15 @@ public class PlayerController : MonoBehaviour
                     {
                         O_armMidpoint.connectedAnchor = Vector2.zero;
                         CarriedObject.transform.parent = O_armMidpoint.transform;
+
                     }
                     else
                     {
                         O_armMidpoint.connectedAnchor = closest.transform.InverseTransformPoint(O_armMidpoint.transform.position);
-                        if(closest.tag == "Player")
+                        if (closest.tag == "Player")
                         {
+                            O_armMidpoint.connectedAnchor = Vector2.zero;
+                            originalMass = closest.attachedRigidbody.mass;
                             closest.attachedRigidbody.mass = 10f;
                             closest.GetComponent<PlayerController>().CarriedbyPlayer = true;
                         }
@@ -258,7 +260,7 @@ public class PlayerController : MonoBehaviour
     void ThrowObject()
     {
         StartCoroutine(ShakeController(1, 0.3f, 1, false));
-        if (CarriedObject.tag == "CarryAble" || grounded)
+        if (CarriedObject.tag == "CarryAble" || CarriedObject.tag == "Player" || grounded)
         {
             CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce, CarriedObject.position + O_armMidpoint.connectedAnchor, ForceMode2D.Impulse);
             Instantiate(ThrowEffects, CarriedObject.transform);
@@ -281,7 +283,7 @@ public class PlayerController : MonoBehaviour
         }
         if (CarriedObject.tag == "Player")
         {
-            CarriedObject.mass = 100f;
+            CarriedObject.mass = originalMass;
         }
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
