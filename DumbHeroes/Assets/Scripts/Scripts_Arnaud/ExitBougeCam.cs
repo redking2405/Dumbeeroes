@@ -10,6 +10,7 @@ public class ExitBougeCam : ExitLevel
     public Transform CameraPos;
     public GameObject[] PrefabPlayer;
     public static List<PlayerData> PlayerSpawnedList = new List<PlayerData>();
+    public float CamSize;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class ExitBougeCam : ExitLevel
             if (players.Count >= totalPlayers && !trigger)
             {
                 FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndBougeCam(FadeInOut.FadeDirection.In, CameraPos));
-
+                Camera.main.orthographicSize = CamSize;
                 Invoke("PlacePlayers", 0.7f);
 
                 trigger = true;
