@@ -7,6 +7,7 @@ public class ThrownObjectEffect : MonoBehaviour
     ParticleSystem collparticles;
     TrailRenderer trail;
     Rigidbody2D rb;
+    bool destroying;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class ThrownObjectEffect : MonoBehaviour
 
     private void Update()
     {
-        if(rb.velocity.magnitude < 1)
+        if(rb.velocity.magnitude < 1 && ! destroying)
         {
             StartCoroutine(Delete());
         }
@@ -35,6 +36,7 @@ public class ThrownObjectEffect : MonoBehaviour
 
     IEnumerator Delete()
     {
+        destroying = true;
         trail.emitting = false;
         collparticles.Stop();
         yield return new WaitForSeconds(2f);
