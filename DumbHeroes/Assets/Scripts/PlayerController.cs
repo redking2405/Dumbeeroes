@@ -203,6 +203,7 @@ public class PlayerController : MonoBehaviour
                 }
                 if (closest != null)
                 {
+                    regrab = false;
                     anims.SetBool("grab", true);
                     O_armMidpoint.connectedBody = closest.attachedRigidbody;
                     grabbedRecLayer = CarriedObject.gameObject.layer;
@@ -264,7 +265,10 @@ public class PlayerController : MonoBehaviour
         {
             CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce, CarriedObject.position + O_armMidpoint.connectedAnchor, ForceMode2D.Impulse);
             Instantiate(ThrowEffects, CarriedObject.transform);
-            CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
+            if (!CarriedObject.gameObject.GetComponent<ThrownObjectEffect>())
+            {
+                CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
+            }
         }
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
         charging = false;
@@ -284,6 +288,7 @@ public class PlayerController : MonoBehaviour
         if (CarriedObject.tag == "Player")
         {
             CarriedObject.mass = originalMass;
+            CarriedObject.GetComponent<PlayerController>().CarriedbyPlayer = false;
         }
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;

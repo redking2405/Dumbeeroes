@@ -28,7 +28,6 @@ public class MouetteSpawner : MonoBehaviour
             {
                 flag = true;
                 v_TimeBeforeMouetteSpawn = SpawnCurve.Evaluate(boat.boatProgress / boat.boatDistance);
-                Debug.Log(v_TimeBeforeMouetteSpawn);
             }
         }
 
