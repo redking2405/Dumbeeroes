@@ -617,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: v_NextLevelName
-      value: 1_Cannon intro
+      value: 3_x Levels
       objectReference: {fileID: 0}
     - target: {fileID: 7595462528463687431, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
@@ -3093,11 +3093,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.8571427
       objectReference: {fileID: 0}
-    - target: {fileID: -5765772024794458036, guid: ace2b5b9a133b3b48bdd7de7238bca98,
-        type: 3}
-      propertyPath: v_ObjectToActivate.Array.data[0]
-      value: 
-      objectReference: {fileID: 1514075611}
     - target: {fileID: 8298777961072880084, guid: ace2b5b9a133b3b48bdd7de7238bca98,
         type: 3}
       propertyPath: m_Offset.x
@@ -3123,6 +3118,11 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5765772024794458036, guid: ace2b5b9a133b3b48bdd7de7238bca98,
+        type: 3}
+      propertyPath: v_ObjectToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1514075611}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace2b5b9a133b3b48bdd7de7238bca98, type: 3}
 --- !u!1001 &2126863042

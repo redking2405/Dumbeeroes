@@ -282,6 +282,11 @@ PrefabInstance:
       propertyPath: reference
       value: 
       objectReference: {fileID: 1876499177}
+    - target: {fileID: 2792410965871760393, guid: c5ac31843ac30694383798055f7fb076,
+        type: 3}
+      propertyPath: v_NextLevelName
+      value: 4_0 I should buy a boat
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ac31843ac30694383798055f7fb076, type: 3}
 --- !u!4 &947391255 stripped
