@@ -12187,6 +12187,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
+        type: 3}
+      propertyPath: v_NextLevelName
+      value: EndScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
+        type: 3}
+      propertyPath: v_isActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
 --- !u!4 &1617323692 stripped
@@ -17507,12 +17517,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6634638827006542084, guid: 3de00ee893e85d74592b24e0a07c5121,
+    - target: {fileID: 6634638827002124144, guid: 3de00ee893e85d74592b24e0a07c5121,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6634638827002124144, guid: 3de00ee893e85d74592b24e0a07c5121,
+    - target: {fileID: 6634638827006542084, guid: 3de00ee893e85d74592b24e0a07c5121,
         type: 3}
       propertyPath: m_Mesh
       value: 

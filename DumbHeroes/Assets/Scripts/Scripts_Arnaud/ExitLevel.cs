@@ -13,7 +13,7 @@ public class ExitLevel : ActivableObjects
     public Sprite v_OpenSprite; // Uniquement tant qu'on a pas de niveaux venant après celui ci
     protected Sprite v_origColor;
     [SerializeField] private string v_NextLevelName; // Uniquement quand on a un niveau venant après ou un écran de fin
-    protected bool v_isActive = false;
+    [SerializeField] protected bool v_isActive = false;
     [SerializeField] protected int totalPlayers;
     protected bool trigger = false;
     protected void Awake()
