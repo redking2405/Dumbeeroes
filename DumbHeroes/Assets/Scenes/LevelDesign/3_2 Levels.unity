@@ -687,6 +687,11 @@ PrefabInstance:
       propertyPath: CameraPos
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2918301239244141674, guid: ed40acc8decaa364d8415f70da405547,
+        type: 3}
+      propertyPath: v_ObjectToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 2918301239482210415}
     m_RemovedComponents:
     - {fileID: 2918301237831060073, guid: ed40acc8decaa364d8415f70da405547, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed40acc8decaa364d8415f70da405547, type: 3}
@@ -711,6 +716,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  v_OpenSprite: {fileID: 0}
+  v_OpenSprite: {fileID: 21300000, guid: 496c92fcb8c38b8448352987a9245276, type: 3}
   v_NextLevelName: 3_3 Levels
   totalPlayers: 0

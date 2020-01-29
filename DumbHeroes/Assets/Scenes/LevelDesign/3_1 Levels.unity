@@ -728,6 +728,11 @@ PrefabInstance:
       propertyPath: reference
       value: 
       objectReference: {fileID: 628250566}
+    - target: {fileID: 5888498793351931128, guid: 5a5cf8719c6ff744cab1885efc42b771,
+        type: 3}
+      propertyPath: v_ObjectToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 9098391169118292184}
     m_RemovedComponents:
     - {fileID: 9098391170724939383, guid: 5a5cf8719c6ff744cab1885efc42b771, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a5cf8719c6ff744cab1885efc42b771, type: 3}
@@ -752,6 +757,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  v_OpenSprite: {fileID: 0}
+  v_OpenSprite: {fileID: 21300000, guid: 496c92fcb8c38b8448352987a9245276, type: 3}
   v_NextLevelName: 3_2 Levels
   totalPlayers: 0
