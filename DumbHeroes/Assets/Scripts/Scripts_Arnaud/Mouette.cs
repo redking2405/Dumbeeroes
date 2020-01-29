@@ -4,100 +4,66 @@ using UnityEngine;
 
 public class Mouette : MonoBehaviour
 {
-    [SerializeField]GameObject v_PrefabObjectSpawn;
-    float v_Speed;
-    float v_TimeBeforeObjectSpawn;
-    float v_TimeBeforeActivate;
-    bool isActive;
-    bool objectLaunched;
-    bool flag;
+    [SerializeField]GameObject prefabObjectSpawn;
+    [SerializeField] Transform carryPoint;
+    public float speed;
     Rigidbody2D rbd;
-    CacaMouette obj;
+    Rigidbody2D carry;
+    float dropTimer;
 
-    private void Awake()
-    {
-        rbd = GetComponent<Rigidbody2D>();
-    }
-    // Start is called before the first frame update
     void Start()
     {
-       
-       
-
+        rbd = GetComponent<Rigidbody2D>();
+        carry = Instantiate(prefabObjectSpawn,carryPoint.position,Quaternion.identity,carryPoint).GetComponent<Rigidbody2D>();
+        carry.isKinematic = true;
+        carry.GetComponent<Collider2D>().enabled = false;
+        dropTimer = Random.Range(3.5f, 4.5f);
     }
 
-    public void Initialise(float p_Speed, float p_TimeBeforeActivate, float p_TimeBeforeObjectSpawn)
+    private void Update()
     {
-        v_Speed = p_Speed;
-        v_TimeBeforeActivate = p_TimeBeforeActivate;
-        v_TimeBeforeObjectSpawn = p_TimeBeforeObjectSpawn;
-        StartCoroutine(WaitForActivation());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isActive)
+        if(carry != null )
         {
-            Move();
-            if (!flag && !objectLaunched)
+            if (dropTimer >= 0)
             {
-                StartCoroutine(WaitForObjectLaunch());
+                dropTimer -= Time.deltaTime;
+            }
+            else
+            {
+                Drop();
             }
         }
     }
-    private void Move()
+
+    private void FixedUpdate()
     {
-        rbd.velocity = v_Speed * Vector2.left;
-    }
-    IEnumerator WaitForActivation()
-    {
-        yield return new WaitForSeconds(v_TimeBeforeActivate);
-        isActive = true;
+        if (rbd.gravityScale == 0)
+        {
+            rbd.velocity = new Vector2(-speed, 0);
+        }
     }
 
-    IEnumerator WaitForObjectLaunch()
+    public void Drop()
     {
-        flag = true;
-        yield return new WaitForSeconds(v_TimeBeforeObjectSpawn);
-        LaunchObject();
-        
+        carry.transform.parent = null;
+        carry.isKinematic = false;
+        carry.velocity = rbd.velocity;
+        carry.GetComponent<Collider2D>().enabled = true;
+        carry = null;
     }
 
-    void LaunchObject()
+    public void Hit()
     {
-        GameObject temp=Instantiate(v_PrefabObjectSpawn, transform.position, Quaternion.identity);
-        obj = temp.GetComponent<CacaMouette>();
-        objectLaunched = true;
-    }
-
-    void Death()
-    {
-        //Play animation éventuelle puis destroy
-        isActive = false;
+        GetComponent<Collider2D>().enabled = false;
         rbd.gravityScale = 1;
-        v_Speed = 0;
-
-        
+        carry = null;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude>=0.25)
-            if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag == "Player")
-            {
-
-                Death();
-            }
-        
-       
-        
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 12)
+        if (collision.gameObject.tag == "CarryAble")
         {
-            obj.SwitchLayer();
+            Hit();
         }
     }
 }
