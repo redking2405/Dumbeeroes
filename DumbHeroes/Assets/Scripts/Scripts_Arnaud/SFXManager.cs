@@ -11,7 +11,7 @@ public class SFXManager : MonoBehaviour
     public List<AudioSource> Character2;
     public List<AudioSource> Character3;
     public List<AudioSource> Character4;
-
+    public List<AudioSource> BoatLevel;
     public List<AudioSource> TutorialLevel;
     public List<AudioSource> GeneralSound;
 

@@ -11524,6 +11524,7 @@ GameObject:
   - component: {fileID: 1345195237}
   - component: {fileID: 1345195236}
   - component: {fileID: 1345195235}
+  - component: {fileID: 1345195239}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -11639,6 +11640,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345195239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345195234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ee9ef119412be4b8b7676a24429ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1349599728
 GameObject:
   m_ObjectHideFlags: 0
@@ -17161,7 +17174,7 @@ GameObject:
   - component: {fileID: 1902460186}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Boat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

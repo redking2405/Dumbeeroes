@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GrabAble
   - CarryAble
+  - Boat
   layers:
   - Default
   - TransparentFX

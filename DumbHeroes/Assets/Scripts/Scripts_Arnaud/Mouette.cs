@@ -18,6 +18,7 @@ public class Mouette : MonoBehaviour
         carry.isKinematic = true;
         carry.GetComponent<Collider2D>().enabled = false;
         dropTimer = Random.Range(3.5f, 4.5f);
+        SFXManager.Instance.BoatLevel[3].Play();
     }
 
     private void Update()
@@ -64,6 +65,7 @@ public class Mouette : MonoBehaviour
         if (collision.gameObject.tag == "CarryAble")
         {
             Hit();
+            SFXManager.Instance.BoatLevel[4].Play();
         }
     }
 }

@@ -57,6 +57,7 @@ public class BoatBehaviour : MonoBehaviour
     public void RowTheBoat(float rowingValue)
     {
         boatSpeed += rowingValue*coefRowing/ Mathf.Max(burdenItem.Count / 3, 1);
+        SFXManager.Instance.BoatLevel[2].Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,7 +86,7 @@ public class BoatBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "CarryAble")
         {
-            //SFXManager.Instance.BoatLevel[4].Play();
+            SFXManager.Instance.BoatLevel[1].Play();
         }
     }
 }
