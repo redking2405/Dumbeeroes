@@ -110,8 +110,8 @@ MonoBehaviour:
   PrefabPlayer:
   - {fileID: 4617375149738744219, guid: f01a5e3210268f94aa349c7ee67e4fde, type: 3}
   - {fileID: 2951907754966474404, guid: 10bedc2b0c63ecf4f949f6e3491c5329, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 6379161464416145253, guid: 1c13ff3148588d942b154dd393602726, type: 3}
+  - {fileID: 2019528947973009491, guid: 3de00ee893e85d74592b24e0a07c5121, type: 3}
 --- !u!1 &6505036455233769328
 GameObject:
   m_ObjectHideFlags: 0

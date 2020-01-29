@@ -13,7 +13,8 @@ public class MouetteSpawner : MonoBehaviour
 
     void Update()
     {
-        spawning += SpawnCurve.Evaluate(boat.boatProgress / boat.boatDistance) * Spawnrate*Time.deltaTime;
+        spawning += SpawnCurve.Evaluate(boat.boatProgress / boat.boatDistance) *Time.deltaTime/Spawnrate*Random.Range(0f,1f);
+        Debug.Log(spawning);
         if (spawning >= 1)
         {
             SpawnMouette();
