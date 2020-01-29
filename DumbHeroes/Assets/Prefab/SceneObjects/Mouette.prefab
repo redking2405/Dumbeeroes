@@ -157,8 +157,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8619a330d0efeb5488097e61d14fe014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObjectSpawn: {fileID: 5512499544707801107, guid: 3f1072481493ead4e8b767a9054f4ff5,
-    type: 3}
+  prefabObjectSpawn:
+  - {fileID: 5512499544707801107, guid: 3f1072481493ead4e8b767a9054f4ff5, type: 3}
+  - {fileID: 3625201182436128497, guid: 263c2878236aab94cb7b6ffb145c275b, type: 3}
+  - {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715, type: 3}
+  - {fileID: 6302999401819193079, guid: c40d912b576de894e877f8107fa7e1ff, type: 3}
   carryPoint: {fileID: 4296860345877970839}
   speed: 6
 --- !u!50 &-5071006363023309133

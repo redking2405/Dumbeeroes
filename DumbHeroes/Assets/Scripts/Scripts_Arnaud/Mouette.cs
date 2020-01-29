@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mouette : MonoBehaviour
 {
-    [SerializeField]GameObject prefabObjectSpawn;
+    [SerializeField] List<GameObject> prefabObjectSpawn = new List<GameObject>();
     [SerializeField] Transform carryPoint;
     public float speed;
     Rigidbody2D rbd;
@@ -14,7 +14,7 @@ public class Mouette : MonoBehaviour
     void Start()
     {
         rbd = GetComponent<Rigidbody2D>();
-        carry = Instantiate(prefabObjectSpawn,carryPoint.position,Quaternion.identity,carryPoint).GetComponent<Rigidbody2D>();
+        carry = Instantiate(prefabObjectSpawn[Random.Range(0,prefabObjectSpawn.Count)],carryPoint.position,Quaternion.identity,carryPoint).GetComponent<Rigidbody2D>();
         carry.isKinematic = true;
         carry.GetComponent<Collider2D>().enabled = false;
         dropTimer = Random.Range(3.5f, 4.5f);
