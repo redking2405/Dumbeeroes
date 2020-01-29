@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
@@ -23,11 +23,22 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        //DontDestroyOnLoad(gameObject);
-        if (musicList.Count > 0)
+
+        PlayMusic(SceneManager.GetActiveScene().name);
+    }
+
+
+    void PlayMusic(string SceneName)
+    {
+        switch (SceneName)
         {
-            musicList[0].Play();
+            case ("0_x Levels"):
+                musicList[0].Play();
+                break;
+            case ("1_0 Throw Friends"):
+                musicList[0].Play();
+                break;
+            
         }
     }
 
