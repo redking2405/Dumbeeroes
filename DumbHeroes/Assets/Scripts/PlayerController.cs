@@ -327,7 +327,7 @@ public class PlayerController : MonoBehaviour
         Collider2D closest = null;
         foreach (Collider2D hit in hits)
         {
-            if (hit.tag == "GrabAble" && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
+            if (hit.tag == "CarryAble" && hit.gameObject != gameObject && Vector2.Distance(O_armMidpoint.transform.position, hit.transform.position) < distance)
             {
                 closest = hit;
             }
