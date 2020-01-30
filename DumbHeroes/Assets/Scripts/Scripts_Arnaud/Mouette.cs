@@ -29,7 +29,6 @@ public class Mouette : MonoBehaviour
         {
             isBomber = true;
         }
-        Debug.Log(isBomber);
     }
 
     private void Update()
