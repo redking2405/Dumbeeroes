@@ -9,7 +9,13 @@ public class Mouette : MonoBehaviour
     public float speed;
     Rigidbody2D rbd;
     Rigidbody2D carry;
+    float timer;
     float dropTimer;
+    public float bomberTimer;
+    public float bombForce;
+    public float bombRange;
+    bool bomber = false;
+    bool isBomber = false;
 
     void Start()
     {
@@ -19,19 +25,28 @@ public class Mouette : MonoBehaviour
         carry.GetComponent<Collider2D>().enabled = false;
         dropTimer = Random.Range(1.5f, 3.5f);
         SFXManager.Instance.BoatLevel[3].Play();
+        if(Random.Range(0f,1f) > 0.5f)
+        {
+            isBomber = true;
+        }
+        Debug.Log(isBomber);
     }
 
     private void Update()
     {
-        if(carry != null )
+        timer += Time.deltaTime;
+        if (carry != null )
         {
-            if (dropTimer >= 0)
-            {
-                dropTimer -= Time.deltaTime;
-            }
-            else
+            if (timer >= dropTimer)
             {
                 Drop();
+            }
+        }
+        if(!bomber && isBomber)
+        {
+            if(timer >= bomberTimer)
+            {
+                bomber = true;
             }
         }
     }
@@ -40,7 +55,14 @@ public class Mouette : MonoBehaviour
     {
         if (rbd.gravityScale == 0)
         {
-            rbd.velocity = new Vector2(-speed, 0);
+            if (!bomber)
+            {
+                rbd.velocity = new Vector2(-speed, 0);
+            }
+            else
+            {
+                rbd.velocity = (new Vector2(-2, -7.5f) - (Vector2)transform.position).normalized * speed*3;
+            }
         }
     }
 
@@ -66,10 +88,31 @@ public class Mouette : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag == "Player")
+
+        if (!bomber && (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag == "Player"))
         {
             Hit();
             SFXManager.Instance.BoatLevel[4].Play();
+        }
+        else
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, bombRange);
+            foreach (Collider2D hit in colliders)
+            {
+                if (hit.gameObject.tag == "CarryAble" || hit.gameObject.tag == "Player")
+                {
+                    if (hit.gameObject.tag == "Player")
+                    {
+                        hit.gameObject.GetComponent<PlayerController>().DropObject();
+                    }
+                    Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+                    if (rb != null)
+                        rb.velocity = rb.transform.position - transform.position * bombForce;
+                }
+            }
+            ParticleSystem p = GetComponentInChildren<ParticleSystem>();
+            p.Play();
+            Hit();
         }
     }
 }
