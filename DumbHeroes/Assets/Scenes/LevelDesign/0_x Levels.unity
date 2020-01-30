@@ -2490,11 +2490,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 39.143093
       objectReference: {fileID: 0}
-    - target: {fileID: 4715244008155887791, guid: 19379e3794efe65479043d3b9b63f2da,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -148
-      objectReference: {fileID: 0}
     - target: {fileID: 4715244008236442784, guid: 19379e3794efe65479043d3b9b63f2da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2564,6 +2559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715244008155887791, guid: 19379e3794efe65479043d3b9b63f2da,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -148
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -6041,10 +6041,10 @@ MonoBehaviour:
   - {fileID: 1857128196}
   CameraPos: {fileID: 1653247169}
   PrefabPlayer:
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 4617375149738744219, guid: f01a5e3210268f94aa349c7ee67e4fde, type: 3}
+  - {fileID: 2951907754966474404, guid: 10bedc2b0c63ecf4f949f6e3491c5329, type: 3}
+  - {fileID: 6379161464416145253, guid: 1c13ff3148588d942b154dd393602726, type: 3}
+  - {fileID: 2019528947973009491, guid: 3de00ee893e85d74592b24e0a07c5121, type: 3}
   CamSize: 19
 --- !u!61 &1736627669
 BoxCollider2D:
@@ -6431,10 +6431,10 @@ MonoBehaviour:
   - {fileID: 1006707749}
   CameraPos: {fileID: 767044750}
   PrefabPlayer:
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
-  - {fileID: 3741436043469978728, guid: 3aa3c29eb1a08354f963d76642d91b3d, type: 3}
+  - {fileID: 4617375149738744219, guid: f01a5e3210268f94aa349c7ee67e4fde, type: 3}
+  - {fileID: 2951907754966474404, guid: 10bedc2b0c63ecf4f949f6e3491c5329, type: 3}
+  - {fileID: 6379161464416145253, guid: 1c13ff3148588d942b154dd393602726, type: 3}
+  - {fileID: 2019528947973009491, guid: 3de00ee893e85d74592b24e0a07c5121, type: 3}
   CamSize: 15
 --- !u!1001 &1835616479
 PrefabInstance:
