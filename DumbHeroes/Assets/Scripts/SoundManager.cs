@@ -38,7 +38,26 @@ public class SoundManager : MonoBehaviour
             case ("1_0 Throw Friends"):
                 musicList[0].Play();
                 break;
-            
+            case ("2_0 Basketball"):
+                musicList[1].Play();
+                break;
+            case ("3_0 Levels"):
+                musicList[1].Play();
+                break;
+            case ("3_1 Levels"):
+                musicList[1].Play();
+                break;
+            case ("3_2 Levels"):
+                musicList[1].Play();
+                break;
+            case ("3_3 Levels"):
+                musicList[1].Play();
+                break;
+                /*case ("4_0 I should buy a boat"):
+                    musicList[1].Play();
+                    break;*/
+
+
         }
     }
 
