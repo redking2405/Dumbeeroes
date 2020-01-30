@@ -330,6 +330,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 832800302384552352, guid: fdcef8992e40da542802cb31225ce573,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.597
+      objectReference: {fileID: 0}
+    - target: {fileID: 832800302384552352, guid: fdcef8992e40da542802cb31225ce573,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 56.173317
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429634044212241293, guid: fdcef8992e40da542802cb31225ce573,
+        type: 3}
+      propertyPath: v_ObjectToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1225838172}
     - target: {fileID: 1225838172, guid: fdcef8992e40da542802cb31225ce573, type: 3}
       propertyPath: startingPosPlayers.Array.data[0]
       value: 
@@ -350,21 +365,6 @@ PrefabInstance:
       propertyPath: CameraPos
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 832800302384552352, guid: fdcef8992e40da542802cb31225ce573,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.597
-      objectReference: {fileID: 0}
-    - target: {fileID: 832800302384552352, guid: fdcef8992e40da542802cb31225ce573,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 56.173317
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429634044212241293, guid: fdcef8992e40da542802cb31225ce573,
-        type: 3}
-      propertyPath: v_ObjectToActivate.Array.data[0]
-      value: 
-      objectReference: {fileID: 1225838172}
     - target: {fileID: 261793516581396955, guid: fdcef8992e40da542802cb31225ce573,
         type: 3}
       propertyPath: m_Sprite
@@ -587,6 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1225838172, guid: fdcef8992e40da542802cb31225ce573, type: 3}
+    - {fileID: 9050843714436257774, guid: fdcef8992e40da542802cb31225ce573, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fdcef8992e40da542802cb31225ce573, type: 3}
 --- !u!1 &1225838171 stripped
 GameObject:
