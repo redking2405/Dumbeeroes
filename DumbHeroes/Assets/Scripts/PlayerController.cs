@@ -272,16 +272,18 @@ public class PlayerController : MonoBehaviour
         if (CarriedObject.tag == "CarryAble" || CarriedObject.tag == "Player" || grounded)
         {
             CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce, CarriedObject.position + O_armMidpoint.connectedAnchor, ForceMode2D.Impulse);
-            Instantiate(ThrowEffects, CarriedObject.transform);
             ThrownObjectEffect fx = CarriedObject.gameObject.GetComponent<ThrownObjectEffect>();
             if (!fx)
             {
-                if (CarriedObject.tag == "Carryable")
+                if (SFXManager.Instance)
                 {
-                    SFXManager.Instance.GeneralSound[1].Play();
+                    if (CarriedObject.tag == "Carryable")
+                    {
+                        SFXManager.Instance.GeneralSound[1].Play();
+                    }
+                    else SFXManager.Instance.Character1[0].Play();
+                    //CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
                 }
-                else SFXManager.Instance.Character1[0].Play();
-                //CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
             }
             else
             {
@@ -304,7 +306,10 @@ public class PlayerController : MonoBehaviour
             if (CarriedObject.tag == "CarryAble")
             {
                 CarriedObject.transform.parent = null;
-                SFXManager.Instance.Character2[1].Play();
+                if (SFXManager.Instance)
+                {
+                    SFXManager.Instance.Character2[1].Play();
+                }
             }
             if (CarriedObject.tag == "Player")
             {

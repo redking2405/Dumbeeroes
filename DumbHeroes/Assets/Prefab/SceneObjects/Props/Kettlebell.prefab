@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8594361866335434706}
   - component: {fileID: 3234133213861010511}
   - component: {fileID: 3735365867893988825}
+  - component: {fileID: 886065645}
   m_Layer: 9
   m_Name: Kettlebell
   m_TagString: CarryAble
@@ -29,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.23, y: -11.87, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5723764836534325405}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,3 +269,91 @@ PolygonCollider2D:
       - {x: -0.2725, y: 0.615}
       - {x: -0.3425, y: 0.59999996}
       - {x: -0.4675, y: 0.56}
+--- !u!114 &886065645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437950426504794446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834a75e67eb04fe4f808a3297ca740b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 0}
+--- !u!1001 &2065169347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 626239133060386179}
+    m_Modifications:
+    - target: {fileID: 5723764838498823005, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_Name
+      value: CollisionEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e41a21375b052e44585d3da48ab04b94, type: 3}
+--- !u!4 &5723764836534325405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5723764838498823006, guid: e41a21375b052e44585d3da48ab04b94,
+    type: 3}
+  m_PrefabInstance: {fileID: 2065169347}
+  m_PrefabAsset: {fileID: 0}
