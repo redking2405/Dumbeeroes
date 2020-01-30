@@ -51,7 +51,12 @@ public class LoadingCanon : MonoBehaviour
         v_MyCanon.v_Loaded = true;
         target.transform.position = v_MyCanon.v_Position.position;
         v_MyCanon.v_ToLaunch = target;
-        
-       
+        if (target.tag == "Player")
+        {
+            PlayerController pc = target.GetComponent<PlayerController>();
+            pc.SetMovementLocked(false);
+        }
+
+
     }
 }

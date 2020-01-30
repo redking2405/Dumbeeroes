@@ -273,7 +273,7 @@ SpriteRenderer:
   m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &213421699
@@ -4572,7 +4572,7 @@ SpriteRenderer:
   m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2918301239482210415
@@ -4592,4 +4592,5 @@ MonoBehaviour:
     m_Bits: 256
   v_OpenSprite: {fileID: 21300000, guid: 496c92fcb8c38b8448352987a9245276, type: 3}
   v_NextLevelName: 3_3 Levels
+  v_isActive: 0
   totalPlayers: 0

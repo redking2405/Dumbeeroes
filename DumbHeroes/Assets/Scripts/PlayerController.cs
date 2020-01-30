@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     bool jump;
     float jumpChrono;
 
+    bool isMovementLocked = false;
+    bool isUnlockedOnGround = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -71,6 +74,10 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 aimVector = new Vector2(V_player.GetAxis("ArmX"), V_player.GetAxis("ArmY"));
         grounded = Physics2D.Raycast(O_groundcheck.position, -Vector2.up, 0.1f, ground);
+        if(isMovementLocked && grounded && isUnlockedOnGround)
+        {
+            isMovementLocked = false;
+        }
         anims.SetBool("floor", grounded);
         AimArm(aimVector.normalized);
         flip();
@@ -86,9 +93,10 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Mathf.Abs(rb.velocity.x) <= V_moveSpeed && ! CarriedbyPlayer)
+        //Debug.Log("Here : " + rb.velocity.x + ", " + V_moveSpeed  + ", " + CarriedbyPlayer);
+        if (!isMovementLocked && ! CarriedbyPlayer)
         {
-            rb.velocity = new Vector2(V_player.GetAxis("MoveX") * 10,rb.velocity.y);
+            rb.velocity = new Vector2(V_player.GetAxis("MoveX") * V_moveSpeed, rb.velocity.y);
             anims.SetFloat("velocity", Mathf.Abs(V_player.GetAxis("MoveX")));
         }
     }
@@ -288,7 +296,9 @@ public class PlayerController : MonoBehaviour
         if (CarriedObject.tag == "Player")
         {
             CarriedObject.mass = originalMass;
-            CarriedObject.GetComponent<PlayerController>().CarriedbyPlayer = false;
+            PlayerController otherPc = CarriedObject.GetComponent<PlayerController>();
+            otherPc.CarriedbyPlayer = false;
+            otherPc.SetMovementLocked(true);
         }
         V_player.SetVibration(0, 0);
         O_armMidpoint.connectedBody = null;
@@ -353,5 +363,11 @@ public class PlayerController : MonoBehaviour
         gameObject.GetComponentInParent<Transform>().position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, gameObject.GetComponentInParent<Transform>().position.z);
 
         
+    }
+
+    public void SetMovementLocked(bool isUnlockedOnGround_ = true) {
+        isMovementLocked = true;
+        isUnlockedOnGround = isUnlockedOnGround_;
+        grounded = false;
     }
 }

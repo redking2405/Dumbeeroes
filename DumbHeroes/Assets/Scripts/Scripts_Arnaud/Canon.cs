@@ -87,6 +87,10 @@ public class Canon : ActivableObjects
                 v_Loaded = false;
 
             }
+            if (rbd.tag == "Player") {
+                PlayerController pc = rbd.GetComponent<PlayerController>();
+                pc.SetMovementLocked(true);
+            }
         }
 
         
