@@ -5,9 +5,10 @@ using UnityEngine;
 public class ThrownObjectEffect : MonoBehaviour
 {
     ParticleSystem collparticles;
-    TrailRenderer trail;
+    public TrailRenderer trail;
     Rigidbody2D rb;
-    bool destroying;
+    const float groundedDuration = 0.2f;
+    Dictionary<GameObject, float> contactTimesPerObject = new Dictionary<GameObject, float>();
 
     private void Start()
     {
@@ -18,29 +19,28 @@ public class ThrownObjectEffect : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        foreach(ContactPoint2D p in collision.contacts)
+        if (!contactTimesPerObject.ContainsKey(collision.gameObject) || Time.time - contactTimesPerObject[collision.gameObject] > groundedDuration &&  rb.velocity.magnitude > 1)
         {
-            collparticles.transform.position = p.point;
-            collparticles.transform.rotation = Quaternion.FromToRotation(collparticles.transform.up, p.normal) * collparticles.transform.rotation;
-            collparticles.Play();
+            foreach (ContactPoint2D p in collision.contacts)
+            {
+                collparticles.transform.position = p.point;
+                collparticles.transform.rotation = Quaternion.FromToRotation(collparticles.transform.up, p.normal) * collparticles.transform.rotation;
+                collparticles.Play();
+            }
         }
+        contactTimesPerObject[collision.gameObject] = Time.time;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        contactTimesPerObject[collision.gameObject] = Time.time;
     }
 
     private void Update()
     {
-        if(rb.velocity.magnitude < 1 && ! destroying)
+        if (rb.velocity.magnitude < 1)
         {
-            StartCoroutine(Delete());
+            trail.emitting = false;
         }
-    }
-
-    IEnumerator Delete()
-    {
-        destroying = true;
-        trail.emitting = false;
-        collparticles.Stop();
-        yield return new WaitForSeconds(2f);
-        Destroy(trail.gameObject);
-        Destroy(this);
     }
 }

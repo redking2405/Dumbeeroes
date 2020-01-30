@@ -26289,6 +26289,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 427125262441626362, guid: 0bbd46633defeeb4ea9d7712dd48735f,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7488575999484418515, guid: 0bbd46633defeeb4ea9d7712dd48735f,
         type: 3}
       propertyPath: m_Name

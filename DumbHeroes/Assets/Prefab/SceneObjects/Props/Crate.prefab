@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 4070794888044671689}
   - component: {fileID: 1370804955142998753}
   - component: {fileID: 3776869319004675657}
-  - component: {fileID: 8550855506597548917}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Crate
   m_TagString: CarryAble
   m_Icon: {fileID: 0}
@@ -144,15 +143,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMat: {fileID: 2100000, guid: 9329ad1e9faf7e948a30a5ff05ff4103, type: 2}
---- !u!114 &8550855506597548917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4070794888044671691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1c4b9443fb7cd4c9397b40777d3189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

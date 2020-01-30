@@ -52,6 +52,10 @@ public class BoatBehaviour : MonoBehaviour
         {
             DockFinish.transform.position = new Vector2(DockFinish.transform.position.x - boatSpeed / 3, DockFinish.transform.position.y);
         }
+        if (DockFinish.transform.position.x <= 0.1f)
+        {
+            Scrolling.speed = 0;
+        }
     }
 
     public void RowTheBoat(float rowingValue)
