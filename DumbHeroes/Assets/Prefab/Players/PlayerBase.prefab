@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 7488576001059640509}
   - component: {fileID: 7488576001059640510}
   - component: {fileID: 7488576001059640511}
+  - component: {fileID: 427125262441626362}
   m_Layer: 0
   m_Name: Grabpoint
   m_TagString: Untagged
@@ -578,3 +579,23 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 2.3
   m_MaxDistanceOnly: 1
+--- !u!231 &427125262441626362
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488576001059640505}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 7488575999528846536}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0.01, y: 3.17}
+  m_AutoConfigureDistance: 0
+  m_Distance: 2.3
+  m_DampingRatio: 0
+  m_Frequency: 10

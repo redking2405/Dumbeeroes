@@ -55,6 +55,7 @@ public class Mouette : MonoBehaviour
 
     public void Hit()
     {
+        Drop();
         GetComponent<Collider2D>().enabled = false;
         rbd.gravityScale = 1;
         carry = null;
@@ -62,7 +63,7 @@ public class Mouette : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "CarryAble")
+        if (collision.gameObject.tag == "CarryAble" || collision.gameObject.tag == "Player")
         {
             Hit();
             SFXManager.Instance.BoatLevel[4].Play();

@@ -25,6 +25,6 @@ public class MouetteSpawner : MonoBehaviour
 
     public void SpawnMouette()
     {
-            GameObject mouette=Instantiate(v_MouettePrefab, transform.position, Quaternion.identity);
+            GameObject mouette=Instantiate(v_MouettePrefab, (Vector2)transform.position + new Vector2(0,Random.Range(-0.5f,0.5f)), Quaternion.identity);
     }
 }

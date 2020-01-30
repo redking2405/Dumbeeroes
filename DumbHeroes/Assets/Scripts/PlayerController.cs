@@ -273,9 +273,14 @@ public class PlayerController : MonoBehaviour
         {
             CarriedObject.AddForceAtPosition(LastAim * throwCurve.Evaluate(Mathf.Min(throwTimeMax, charge / throwTimeMax)) * throwForce, CarriedObject.position + O_armMidpoint.connectedAnchor, ForceMode2D.Impulse);
             Instantiate(ThrowEffects, CarriedObject.transform);
-            if (!CarriedObject.gameObject.GetComponent<ThrownObjectEffect>())
+            ThrownObjectEffect fx = CarriedObject.gameObject.GetComponent<ThrownObjectEffect>();
+            if (!fx)
             {
                 CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
+            }
+            else
+            {
+                fx.trail.emitting = true;
             }
         }
         O_armMidpoint.GetComponent<DistanceJoint2D>().distance = grabpointDist;
