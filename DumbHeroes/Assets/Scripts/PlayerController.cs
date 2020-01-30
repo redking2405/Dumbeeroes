@@ -275,6 +275,11 @@ public class PlayerController : MonoBehaviour
             Instantiate(ThrowEffects, CarriedObject.transform);
             if (!CarriedObject.gameObject.GetComponent<ThrownObjectEffect>())
             {
+                if (CarriedObject.tag == "Carryable")
+                {
+                    SFXManager.Instance.GeneralSound[1].Play();
+                }
+                else SFXManager.Instance.Character1[0].Play();
                 CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
             }
         }
@@ -292,6 +297,7 @@ public class PlayerController : MonoBehaviour
         if (CarriedObject.tag == "CarryAble")
         {
             CarriedObject.transform.parent = null;
+            SFXManager.Instance.Character2[1].Play();
         }
         if (CarriedObject.tag == "Player")
         {
