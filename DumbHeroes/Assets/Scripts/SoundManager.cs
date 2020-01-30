@@ -53,9 +53,9 @@ public class SoundManager : MonoBehaviour
             case ("3_3 Levels"):
                 musicList[1].Play();
                 break;
-                /*case ("4_0 I should buy a boat"):
-                    musicList[1].Play();
-                    break;*/
+                case ("4_0 I should buy a boat"):
+                    musicList[2].Play();
+                    break;
 
 
         }
