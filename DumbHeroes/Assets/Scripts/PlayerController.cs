@@ -296,24 +296,27 @@ public class PlayerController : MonoBehaviour
 
     public void DropObject()
     {
-        AimArrow.transform.localScale = Vector3.zero;
-        anims.SetBool("grab", false);
-        CarriedObject.gameObject.layer = grabbedRecLayer;
-        if (CarriedObject.tag == "CarryAble")
+        if (CarriedObject)
         {
-            CarriedObject.transform.parent = null;
-            SFXManager.Instance.Character2[1].Play();
+            AimArrow.transform.localScale = Vector3.zero;
+            anims.SetBool("grab", false);
+            CarriedObject.gameObject.layer = grabbedRecLayer;
+            if (CarriedObject.tag == "CarryAble")
+            {
+                CarriedObject.transform.parent = null;
+                SFXManager.Instance.Character2[1].Play();
+            }
+            if (CarriedObject.tag == "Player")
+            {
+                CarriedObject.mass = originalMass;
+                PlayerController otherPc = CarriedObject.GetComponent<PlayerController>();
+                otherPc.CarriedbyPlayer = false;
+                otherPc.SetMovementLocked(true);
+            }
+            V_player.SetVibration(0, 0);
+            O_armMidpoint.connectedBody = null;
+            O_armMidpoint.enabled = false;
         }
-        if (CarriedObject.tag == "Player")
-        {
-            CarriedObject.mass = originalMass;
-            PlayerController otherPc = CarriedObject.GetComponent<PlayerController>();
-            otherPc.CarriedbyPlayer = false;
-            otherPc.SetMovementLocked(true);
-        }
-        V_player.SetVibration(0, 0);
-        O_armMidpoint.connectedBody = null;
-        O_armMidpoint.enabled = false;
     }
 
     IEnumerator ShakeController(float power, float time, int motor, bool both)
