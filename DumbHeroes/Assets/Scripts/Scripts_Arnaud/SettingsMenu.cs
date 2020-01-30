@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer v_AudioMixer;
@@ -19,6 +20,11 @@ public class SettingsMenu : MonoBehaviour
         masterVolume.onValueChanged.AddListener(delegate { SetVolume(); });
         muVolume.onValueChanged.AddListener(delegate { SetMusic(); });
         sfVolume.onValueChanged.AddListener(delegate { SetSFX(); });
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void SetVolume()
