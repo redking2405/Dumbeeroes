@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
                     SFXManager.Instance.GeneralSound[1].Play();
                 }
                 else SFXManager.Instance.Character1[0].Play();
-                CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
+                //CarriedObject.gameObject.AddComponent<ThrownObjectEffect>();
             }
             else
             {

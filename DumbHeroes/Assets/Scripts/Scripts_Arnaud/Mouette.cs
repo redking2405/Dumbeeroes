@@ -17,7 +17,7 @@ public class Mouette : MonoBehaviour
         carry = Instantiate(prefabObjectSpawn[Random.Range(0,prefabObjectSpawn.Count)],carryPoint.position,Quaternion.identity,carryPoint).GetComponent<Rigidbody2D>();
         carry.isKinematic = true;
         carry.GetComponent<Collider2D>().enabled = false;
-        dropTimer = Random.Range(3.5f, 4.5f);
+        dropTimer = Random.Range(1.5f, 3.5f);
         SFXManager.Instance.BoatLevel[3].Play();
     }
 
@@ -46,11 +46,14 @@ public class Mouette : MonoBehaviour
 
     public void Drop()
     {
-        carry.transform.parent = null;
-        carry.isKinematic = false;
-        carry.velocity = rbd.velocity;
-        carry.GetComponent<Collider2D>().enabled = true;
-        carry = null;
+        if (carry != null)
+        {
+            carry.transform.parent = null;
+            carry.isKinematic = false;
+            carry.velocity = rbd.velocity;
+            carry.GetComponent<Collider2D>().enabled = true;
+            carry = null;
+        }
     }
 
     public void Hit()
