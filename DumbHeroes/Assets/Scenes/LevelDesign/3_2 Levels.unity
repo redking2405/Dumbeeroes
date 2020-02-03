@@ -127,11 +127,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8298777961072880086, guid: ace2b5b9a133b3b48bdd7de7238bca98,
-        type: 3}
-      propertyPath: m_Name
-      value: ON_OFF
-      objectReference: {fileID: 0}
     - target: {fileID: 8298777961072880081, guid: ace2b5b9a133b3b48bdd7de7238bca98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,6 +186,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298777961072880086, guid: ace2b5b9a133b3b48bdd7de7238bca98,
+        type: 3}
+      propertyPath: m_Name
+      value: ON_OFF
       objectReference: {fileID: 0}
     - target: {fileID: -5765772024794458036, guid: ace2b5b9a133b3b48bdd7de7238bca98,
         type: 3}
@@ -1647,11 +1647,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate
-      objectReference: {fileID: 0}
     - target: {fileID: 4070794888044671799, guid: 048f7406c3475604eb0bfb05ae218715,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1706,6 +1701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 048f7406c3475604eb0bfb05ae218715, type: 3}
@@ -3336,6 +3336,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   v_OpenSprite: {fileID: 21300000, guid: 496c92fcb8c38b8448352987a9245276, type: 3}
-  v_NextLevelName: 4_0 I should buy a boat
+  v_NextLevelName: 3_3 Levels
   v_isActive: 0
   totalPlayers: 0
