@@ -70,6 +70,7 @@ public class PressurePlate : Interrupteur
         {
            
             v_WeightOnPlate -= collision.attachedRigidbody.mass;
+            trigger = false;
             
 
         }
