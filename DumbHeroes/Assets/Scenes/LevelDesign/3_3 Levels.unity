@@ -1844,7 +1844,7 @@ MonoBehaviour:
   zoomDamp: 1
   zoomMax: 25
   zoomMin: 15
-  Bounds: {fileID: 0}
+  Bounds: {fileID: 1007550398}
 --- !u!1001 &1909874191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2241,11 +2241,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 4070794888044671799, guid: 048f7406c3475604eb0bfb05ae218715,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2300,6 +2295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070794888044671691, guid: 048f7406c3475604eb0bfb05ae218715,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 048f7406c3475604eb0bfb05ae218715, type: 3}
