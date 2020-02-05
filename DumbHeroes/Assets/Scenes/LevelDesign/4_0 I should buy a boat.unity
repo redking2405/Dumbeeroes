@@ -17080,7 +17080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boatProgress: 0
-  boatDistance: 5000
+  boatDistance: 4000
   coefRowing: 0.5
   sinkingCoef: 1
   Slowfactor: 0.1
