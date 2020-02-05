@@ -82,6 +82,7 @@ public class Canon : ActivableObjects
                 var direction=Quaternion.AngleAxis(v_Angle, Vector3.forward) * Vector3.right;
                 direction = direction.normalized;
                 rbd.AddForce(direction * v_Force, ForceMode2D.Impulse);
+                SFXManager.Instance.GeneralSound[2].Play();
                 rbd.mass = mass;
                 v_ToLaunch = null;
                 v_Loaded = false;

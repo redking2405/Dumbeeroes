@@ -27,6 +27,8 @@ public class ThrownObjectEffect : MonoBehaviour
                 collparticles.transform.rotation = Quaternion.FromToRotation(collparticles.transform.up, p.normal) * collparticles.transform.rotation;
                 collparticles.Play();
             }
+
+            SFXManager.Instance.GeneralSound[3].Play();
         }
         contactTimesPerObject[collision.gameObject] = Time.time;
     }
