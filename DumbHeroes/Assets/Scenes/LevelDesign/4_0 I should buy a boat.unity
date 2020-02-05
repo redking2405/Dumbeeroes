@@ -11954,7 +11954,7 @@ PrefabInstance:
     - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: v_NextLevelName
-      value: EndScreen
+      value: EndScene
       objectReference: {fileID: 0}
     - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
