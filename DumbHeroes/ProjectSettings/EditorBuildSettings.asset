@@ -15,81 +15,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Screen/OptionMenu.unity
     guid: 5cee583e779a6914cbbaf4badbfa6d9f
   - enabled: 1
-    path: Assets/Scenes/Screen/EndScene.unity
-    guid: f28999fcbb0cdc64fb91e62a54f3940b
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/0_1_Take crates 1.unity"
-    guid: 1aa3c2a727142024e97f243179ba2350
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/0_Take crates.unity"
-    guid: 162e559087fa48d4ea354a0bf252e82c
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/1_TUTO Box.unity"
-    guid: 915e9380f17e596498213d03372c821c
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/2_TUTO Friends.unity"
-    guid: bd332944e5b20974795a4e7fe261dd33
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/3_TUTO B_Hold.unity"
-    guid: 0377e9c47c610ea41a4fb97762f5bbe5
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/4_TUTO 2B_Hold.unity"
-    guid: 11616011e8535084cbb54d3f4f85a555
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/5_TUTO_2 2B_Hold.unity"
-    guid: 3461ec4a27cbc3b4a9d254246bb19ef5
+    path: Assets/Scenes/LevelDesign/0_x Levels.unity
+    guid: 87b8200230d8d614ea1d4b1cd6d75cc6
   - enabled: 1
-    path: Assets/Scenes/LevelDesign/3_2 Levels.unity
-    guid: c636defb36394b0499b52f11b149c756
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/LevelDesign/3_1 Levels.unity
-    guid: 4e9a788286aba314eb7a1c78c1c94e72
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/LevelDesign/3_3 Levels.unity
-    guid: 7120eb02941fe394485e2a83d9cf449b
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/4_Cannon.unity"
-    guid: df4346966cea3714aa17f75f3ffa5f6f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/LevelDesign/4_0 I should buy a boat.unity
-    guid: b72262cba0a495943a0d63d977b4f0c7
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: "Assets/Scenes/LevelDesign/Level pas gard\xE9s/4_Cannon.unity"
-    guid: df4346966cea3714aa17f75f3ffa5f6f
-  - enabled: 0
-    path: Assets/Scenes/LevelDesign/Final Level/1_0 Throw crates.unity
-    guid: 6efe6bfd134194f4b9d504206c542249
-  - enabled: 0
-    path: Assets/Scenes/LevelDesign/Final Level/3_x Levels.unity
-    guid: 71d5947221f35a542ad9b4cb6a95d61d
-  - enabled: 0
-    path: Assets/Scenes/LevelDesign/Final Level/2_0 Basketball.unity
-    guid: 9fcd622aa1670c24387e68c3b4362cd8
+    path: Assets/Scenes/LevelDesign/1_0 Throw crates.unity
+    guid: 09dda55f471c07e49b79e2f6bcf79d9e
   - enabled: 1
     path: Assets/Scenes/LevelDesign/2_0 Basketball.unity
     guid: ee6ab2835dc39d64d84fb862a3c1c963
   - enabled: 1
-    path: Assets/Scenes/LevelDesign/0_x Levels.unity
-    guid: 87b8200230d8d614ea1d4b1cd6d75cc6
+    path: Assets/Scenes/LevelDesign/3_0 Levels.unity
+    guid: 16aa968c7a0ce9645ac5cfae427d1472
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/3_2 Levels.unity
+    guid: c636defb36394b0499b52f11b149c756
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/3_3 Levels.unity
+    guid: 7120eb02941fe394485e2a83d9cf449b
+  - enabled: 1
+    path: Assets/Scenes/LevelDesign/4_0 I should buy a boat.unity
+    guid: b72262cba0a495943a0d63d977b4f0c7
+  - enabled: 1
+    path: Assets/Scenes/Screen/EndScene.unity
+    guid: f28999fcbb0cdc64fb91e62a54f3940b
   m_configObjects: {}

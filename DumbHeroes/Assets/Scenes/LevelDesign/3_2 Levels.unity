@@ -683,7 +683,7 @@ PrefabInstance:
     - target: {fileID: 4114136624370497336, guid: e65b97ffce642804ab3ac461e9de0414,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4114136624370497336, guid: e65b97ffce642804ab3ac461e9de0414,
         type: 3}
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Fleche: {fileID: 974102652}
   v_Angle: -30
-  v_Force: 3000
+  v_Force: 200
   v_Position: {fileID: 1480266016}
   v_TimerMax: 1
   v_ToLaunch: {fileID: 0}
@@ -1685,7 +1685,7 @@ PrefabInstance:
     - target: {fileID: 4070794888044671799, guid: 048f7406c3475604eb0bfb05ae218715,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4070794888044671799, guid: 048f7406c3475604eb0bfb05ae218715,
         type: 3}
@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44790167330236b408a5983f9f6d0c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 0}
+  reference: {fileID: 911032055}
   origMass: 0
 --- !u!1001 &1513200189
 PrefabInstance:
