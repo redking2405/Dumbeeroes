@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 14e6afc4724afe34bbc10a71c08f297a, type: 3}
-  m_Color: {r: 0.8113208, g: 0.6537286, b: 0.28702387, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
     m_Bits: 256
   v_OpenSprite: {fileID: 21300000, guid: 496c92fcb8c38b8448352987a9245276, type: 3}
   v_NextLevelName: 3_TUTO B_Hold
+  v_isActive: 0
+  totalPlayers: 0
 --- !u!61 &5977942100777821588
 BoxCollider2D:
   m_ObjectHideFlags: 0
