@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
     {
         if (V_player.GetButtonDown("Reload"))
         {
-            FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, SceneManager.GetActiveScene().name));
+            //FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, SceneManager.GetActiveScene().name));
 
-            /*switch (SceneManager.GetActiveScene().name)
+            switch (SceneManager.GetActiveScene().name)
             {
                 case ("0_x Levels"):
                     FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, "2_0 Basketball"));
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
                 case ("4_0 I should buy a boat"):
                     FadeInOut.Instance.StartCoroutine(FadeInOut.Instance.FadeAndLoadScene(FadeInOut.FadeDirection.In, "EndScene"));
                     break;
-            }*/
+            }
         }
     }
     private void FixedUpdate()

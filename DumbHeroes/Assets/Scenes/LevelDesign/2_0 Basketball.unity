@@ -942,7 +942,7 @@ PrefabInstance:
     - target: {fileID: 7595462528463687416, guid: b9877c1980301a747bf2b7101aaa5063,
         type: 3}
       propertyPath: v_NextLevelName
-      value: 3_0 Levels
+      value: 4_0 I should buy a boat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9877c1980301a747bf2b7101aaa5063, type: 3}
@@ -1013,11 +1013,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5291219307478513128, guid: 1315b641be482bd46bdc94b578dc944c,
-        type: 3}
-      propertyPath: v_TimerMax
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5291219307478513131, guid: 1315b641be482bd46bdc94b578dc944c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1052,6 +1047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291219307478513128, guid: 1315b641be482bd46bdc94b578dc944c,
+        type: 3}
+      propertyPath: v_TimerMax
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1315b641be482bd46bdc94b578dc944c, type: 3}
@@ -1677,6 +1677,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &768341257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 437801515056126451, guid: be7d1392adb12df40bf2c2fadc89c05f,
+    type: 3}
+  m_PrefabInstance: {fileID: 62773666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!255 &768341258
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768341257}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: 1000
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 45.929, y: 3.7752}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!50 &768341259
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768341257}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &804346954
 PrefabInstance:
   m_ObjectHideFlags: 0
