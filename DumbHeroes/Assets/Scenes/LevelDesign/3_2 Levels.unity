@@ -2032,7 +2032,7 @@ MonoBehaviour:
   v_Force: 200
   v_Position: {fileID: 1480266016}
   v_TimerMax: 1
-  v_ToLaunch: {fileID: 0}
+  v_ToLaunch: {fileID: 896103707}
   v_Ready: 0
   v_Loaded: 0
   canShoot: 1
@@ -2345,7 +2345,7 @@ MonoBehaviour:
   v_Force: 2000
   v_Position: {fileID: 2002577511}
   v_TimerMax: 1
-  v_ToLaunch: {fileID: 0}
+  v_ToLaunch: {fileID: 896103707}
   v_Ready: 0
   v_Loaded: 0
   canShoot: 1
@@ -5134,7 +5134,7 @@ PrefabInstance:
     - target: {fileID: 6967563604515307917, guid: ccc4f404a4c556540a6d230292576626,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6967563604515307910, guid: ccc4f404a4c556540a6d230292576626,
         type: 3}
